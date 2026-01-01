@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}User Details: {{ target_user.username }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 bg-primary text-white">
+                <h5 class="m-0 fw-bold">User Profile: {{ target_user.get_full_name|default:target_user.username }}</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="text-primary mb-3">General Information</h6>
+                
+                <p><strong>Username:</strong> {{ target_user.username }}</p>
+                <p><strong>Email:</strong> {{ target_user.email }}</p>
+                <p><strong>Full Name:</strong> {{ target_user.get_full_name|default:"N/A" }}</p>
+                <p><strong>Role:</strong> 
+                    {% if target_user.role %}
+                        <span class="badge bg-info text-dark">{{ target_user.role.name }}</span>
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </p>
+                
+                <hr>
+                <h6 class="text-primary mb-3">System Status</h6>
+                <p><strong>Account Status:</strong> 
+                    {% if target_user.is_active %}
+                        <span class="badge bg-success">Active</span>
+                    {% else %}
+                        <span class="badge bg-danger">Inactive</span>
+                    {% endif %}
+                </p>
+                <p><strong>Assigned Superior:</strong> 
+                    {% if target_user.assigned_to %}
+                        {{ target_user.assigned_to.get_full_name }} ({{ target_user.assigned_to.role.name }})
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </p>
+
+                <a href="{% url 'edit_user' target_user.id %}" class="btn btn-primary mt-3">Edit Profile</a>
+                <a href="{% url 'manage_users' %}" class="btn btn-secondary mt-3">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

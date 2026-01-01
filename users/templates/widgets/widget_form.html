@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load category_tags %} 
+
+{% block content %}
+<div class="container-fluid mt-4"> 
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>
+            {% if form.instance.pk %}✏️ Edit Widget: <strong>{{ form.instance.name }}</strong>{% else %}✨ Create New Widget{% endif %}
+        </h2>
+        <a href="{% url 'widget_list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div class="row">
+
+            {# LEFT COLUMN: Core Details #}
+            <div class="col-lg-8">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Widget Settings & Post Fields</h6>
+                    </div>
+                    <div class="card-body">
+                        
+                        {# 1. Name #}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Widget Name</label>
+                            {% render_field form.title class="form-control" placeholder="e.g., Hero Slider" %}
+                            {% for error in form.title.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        {# 2. Slug #}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Slug</label>
+                            {% render_field form.slug class="form-control" placeholder="hero-slider" %}
+                            <small class="form-text text-muted">Auto-generated from name if left blank.</small>
+                            {% for error in form.slug.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        {# 3. Excerpt #}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Description (Optional)</label>
+                            {% render_field form.excerpt class="form-control" rows="3" placeholder="Briefly describe what this widget displays..." %}
+                            {% for error in form.excerpt.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        {# 4. Dynamic Post Fields #}
+                        {% if form.child_fields %}
+                        <div class="form-group p-3 border rounded bg-light">
+                            <label class="h5 d-block mb-3">Define Post Fields:</label>
+                            <p class="text-muted small">Check the fields that should appear when someone adds a "Post" to this widget.</p>
+                            
+                            {# Warning if posts already exist #}
+                            {% if widget.post_count > 0 %}
+                                <div class="alert alert-warning small">
+                                    <i class="bi bi-exclamation-triangle"></i> 
+                                    This widget has <strong>{{ widget.post_count }}</strong> posts. Removing fields may hide data in those posts.
+                                </div>
+                            {% endif %}
+                            
+                            <div class="row">
+                                {% for choice in form.child_fields %}
+                                <div class="col-sm-6 col-md-4 mb-2">
+                                    <div class="form-check">
+                                        {{ choice.tag }}
+                                        <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                            {{ choice.choice_label }}
+                                        </label>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            {% if form.child_fields.errors %}
+                                <div class="mt-2"><small class="text-danger">{{ form.child_fields.errors }}</small></div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {# RIGHT COLUMN: Media & Actions #}
+            <div class="col-lg-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-success">Media</h6>
+                    </div>
+                    <div class="card-body">
+                                                                    
+                        {% if form.instance.media_file %}
+                            <h6 class="small text-muted mb-2">Current Preview:</h6>
+                            
+                            {% with file_url=form.instance.media_file.url %}
+                                <div class="mb-2">
+                                    {# 1. CLICKABLE PREVIEW #}
+                                    {% if file_url|is_video %}
+                                        <div class="ratio ratio-16x9 bg-dark rounded mb-2">
+                                            <video controls style="max-height:200px;">
+                                                <source src="{{ file_url }}" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    {% elif file_url|is_image %}
+                                        <a href="{{ file_url }}" target="_blank" title="View full image">
+                                            <img src="{{ file_url }}" class="img-fluid rounded border mb-2" style="max-height:200px; width:100%; object-fit: cover;">
+                                        </a>
+                                    {% endif %}
+                                    
+                                    <div class="d-flex justify-content-between align-items-center bg-light p-2 rounded border">
+                                        {# 2. CLICKABLE FILE LINK #}
+                                        <a href="{{ file_url }}" target="_blank" class="text-decoration-none small text-truncate" style="max-width: 150px;">
+                                            <i class="bi bi-box-arrow-up-right"></i> {{ form.instance.media_file.name|truncatechars:20 }}
+                                        </a>
+                                        
+                                        {# MANUAL DELETE CHECKBOX #}
+                                        <div class="form-check mb-0">
+                                            <input type="checkbox" name="media_file-clear" id="media_file-clear_id" class="form-check-input">
+                                            <label class="form-check-label small text-danger fw-bold" for="media_file-clear_id" style="cursor: pointer;">
+                                                Remove
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endwith %}
+                        {% endif %}
+
+                        <br>
+
+                        {# MANUAL FILE INPUT RENDER #}
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold" for="id_media_file">Upload/Replace File</label>
+                            {# Fixed the double dot typo here #}
+                            <input type="file" name="media_file" id="id_media_file" class="form-control {% if form.media_file.errors %}is-invalid{% endif %}" accept="image/*,video/*">
+                            
+                            {% for error in form.media_file.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <hr>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save"></i> Save Widget
+                            </button>
+                            
+                            {% if form.instance.pk %}
+                                {% if widget.post_count == 0 %}
+                                    <a href="{% url 'widget_delete' slug=form.instance.slug %}" 
+                                    class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('Delete this widget?');">
+                                        Delete Widget
+                                    </a>                                
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

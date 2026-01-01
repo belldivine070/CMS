@@ -1,0 +1,125 @@
+{% extends "portech/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static "portech/images/bg_2.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-end">
+			<div class="col-md-9 ftco-animate pb-5 fadeInUp ftco-animated">
+				<p class="breadcrumbs"><span class="mr-2"><a href="{% url "home" %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Contact us <i class="fa fa-chevron-right"></i></span></p>
+				<h1 class="mb-0 bread">Contact us</h1>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="wrapper">
+					<div class="row mb-5">
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-map-marker"></span>
+								</div>
+								<div class="text">
+									<p><span>Address:</span> {{ CONTACT_ADDRESS }}</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-phone"></span>
+								</div>
+								<div class="text">
+									<p><span>Phone:</span> <a href="tel://1234567920"> {{ CONTACT_PERSON1 }}</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-paper-plane"></span>
+								</div>
+								<div class="text">
+									<p><span>Email:</span> <a href="mailto:info@yoursite.com">{{ OFFICIAL_EMAIL }}</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-globe"></span>
+								</div>
+								<div class="text">
+									<p><span>Website</span> <a href="#">yoursite.com</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row no-gutters">
+						<div class="col-md-7">
+							<div class="contact-wrap w-100 p-md-5 p-4">
+								<h3 class="mb-4">Contact Us</h3>
+								<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="label" for="name">Full Name</label>
+												<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+											</div>
+										</div>
+										<div class="col-md-6"> 
+											<div class="form-group">
+												<label class="label" for="email">Email Address</label>
+												<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="label" for="subject">Subject</label>
+												<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="label" for="#">Message</label>
+												<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<input type="submit" value="Send Message" class="btn btn-primary">
+												<div class="submitting"></div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-5 d-flex align-items-stretch">
+							<div class="info-wrap w-100 p-5 img" style="background-image: url({% static "portech/images/about-4.jpg" %});">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 mt-5">
+				<div id="map" class="bg-white" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="contact_files/icon_error.png" alt="" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock content %}
+
+
+{% block subcriber %}
+
+{% endblock %}

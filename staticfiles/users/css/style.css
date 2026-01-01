@@ -1,0 +1,145 @@
+/* ---------------------------------------
+   DARK MODE — only navbar + hamburger
+-----------------------------------------*/
+.navbar.dark-mode {
+    background-color: #131313 !important;
+    /* darker */
+    border-bottom: 1px solid #222;
+}
+
+.navbar.dark-mode .nav-link,
+.navbar.dark-mode .navbar-brand,
+.navbar.dark-mode i {
+    color: #ffffff !important;
+}
+
+.navbar.dark-mode .btn {
+    color: #ffffff !important;
+}
+
+/* Hamburger in dark mode */
+.dark-mode-hamburger {
+    color: #ffffff !important;
+}
+
+/* Background should be lighter than navbar */
+body.dark-background {
+    background-color: #1d1d1d !important;
+    /* lighter dark */
+}
+
+
+/* ---------------------------------------
+    SIDEBAR — unchanged but works in all modes
+-----------------------------------------*/
+#sidebar {
+    width: 260px;
+    transition: all 0.3s ease;
+}
+
+#sidebar.d-none {
+    margin-left: -260px;
+}
+
+/* MOBILE SIDEBAR */
+#sidebar.mobile-active {
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        z-index: 1100;
+    }
+}
+
+/* MOBILE OVERLAY */
+#mobileOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1090;
+}
+
+#mobileOverlay.active {
+    display: block;
+}
+
+
+.image-preview {
+    position: relative;
+    padding-top: 100%; /* Creates a square aspect ratio */
+    overflow: hidden;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.image-preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    opacity: 1;
+    padding: 0.25rem;
+    line-height: 1;
+    font-size: 0.75rem;
+    z-index: 10;
+}
+/* Style to visually show the user which images will be deleted */
+.image-deleted {
+    opacity: 0.5;
+    pointer-events: none; /* Disable clicking once marked for deletion */
+}
+.image-deleted .image-preview {
+    border: 3px solid #dc3545; /* Red border */
+}.image-preview {
+    position: relative;
+    padding-top: 100%; /* Creates a square aspect ratio */
+    overflow: hidden;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.image-preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    opacity: 1;
+    padding: 0.25rem;
+    line-height: 1;
+    font-size: 0.75rem;
+    z-index: 10;
+}
+/* Style to visually show the user which images will be deleted */
+.image-deleted {
+    opacity: 0.5;
+    pointer-events: none; /* Disable clicking once marked for deletion */
+}
+.image-deleted .image-preview {
+    border: 3px solid #dc3545; /* Red border */
+}

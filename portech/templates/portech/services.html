@@ -1,0 +1,107 @@
+{% extends "portech/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static "portech/images/bg_2.jpg" %}');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end">
+      <div class="col-md-9 ftco-animate pb-5 fadeInUp ftco-animated">
+       <p class="breadcrumbs"><span class="mr-2"><a href="{% url "home" %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Services <i class="fa fa-chevron-right"></i></span></p>
+       <h1 class="mb-0 bread">Services</h1>
+     </div>
+   </div>
+ </div>
+</section>
+
+<section class="ftco-section bg-light">
+  <div class="container">
+   <div class="row justify-content-center pb-5">
+    <div class="col-md-12 heading-section text-center ftco-animate">
+     <span class="subheading">Our Services</span>
+     <h2 class="mb-4">Customized Solution for Every Business</h2>
+   </div>
+ </div>
+ <div class="row justify-content-center">
+
+  {% for skill in skills|slice:":4" %}
+  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+    <div class="services">
+      <div class="icon"><span class="{{ skill.icon }}"></span></div>
+      <div class="media-body">
+        <h3 class="heading mb-3">{{ skill.title }}</h3>
+        <p>{{ skill.excerpt }}</p>
+      </div>
+      <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+    </div>      
+  </div>
+  {% endfor %}
+  
+{% comment %}   
+  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+    <div class="services">
+      <div class="icon"><span class="flaticon-web-programming"></span></div>
+      <div class="media-body">
+        <h3 class="heading mb-3">Development</h3>
+        <p>A small river named Duden flows by their place and supplies 
+it with the necessary regelialia. It is a paradisematic country, in 
+which roasted parts of sentences fly into your mouth.</p>
+      </div>
+      <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+    </div>    
+  </div>
+  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+    <div class="services">
+      <div class="icon"><span class="flaticon-branding"></span></div>
+      <div class="media-body">
+        <h3 class="heading mb-3">Branding</h3>
+        <p>A small river named Duden flows by their place and supplies 
+it with the necessary regelialia. It is a paradisematic country, in 
+which roasted parts of sentences fly into your mouth.</p>
+      </div>
+      <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+    </div>      
+  </div>
+  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+    <div class="services">
+      <div class="icon"><span class="flaticon-stats"></span></div>
+      <div class="media-body">
+        <h3 class="heading mb-3">Search Optimization</h3>
+        <p>A small river named Duden flows by their place and supplies 
+it with the necessary regelialia. It is a paradisematic country, in 
+which roasted parts of sentences fly into your mouth.</p>
+      </div>
+      <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+    </div>      
+  </div>
+  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+    <div class="services">
+      <div class="icon"><span class="flaticon-stats"></span></div>
+      <div class="media-body">
+        <h3 class="heading mb-3">Graphic Design</h3>
+        <p>A small river named Duden flows by their place and supplies 
+it with the necessary regelialia. It is a paradisematic country, in 
+which roasted parts of sentences fly into your mouth.</p>
+      </div>
+      <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+    </div>      
+  </div>
+  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+    <div class="services">
+      <div class="icon"><span class="flaticon-stats"></span></div>
+      <div class="media-body">
+        <h3 class="heading mb-3">Advance Analytic</h3>
+        <p>A small river named Duden flows by their place and supplies 
+it with the necessary regelialia. It is a paradisematic country, in 
+which roasted parts of sentences fly into your mouth.</p>
+      </div>
+      <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+    </div>      
+  </div> {% endcomment %}
+
+</div>
+</div>
+</section>
+
+{% endblock content %}

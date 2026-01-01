@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Edit Role: {{ role.name }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid pt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white py-4">
+            <h4 class="m-0 fw-bold">
+                <i class="fas fa-edit me-2"></i> Edit Role: {{ role.name }}
+            </h4>
+            <p class="small mb-0">
+                Update the role name and granular permissions.
+            </p>
+        </div>
+        
+        <div class="card-body p-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h5 class="text-secondary mb-3">Role Details</h5>
+                        
+                        <div class="mb-4">
+                            {{ form.name.label_tag }}
+                            {% render_field form.name class="form-control" %}
+                            {% for error in form.name.errors %}
+                                <p class="text-danger small mt-1">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+
+                        <h5 class="text-secondary mt-5 mb-3">Role Permissions</h5>
+                        
+                        <div class="p-3 border rounded">
+                            <div class="form-check mb-3">
+                                {% render_field form.can_create_user class="form-check-input" %}
+                                <label class="form-check-label fw-medium" for="{{ form.can_create_user.id_for_label }}">
+                                    {{ form.can_create_user.label }}
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-0">
+                                {% render_field form.can_assign_staff class="form-check-input" %}
+                                <label class="form-check-label fw-medium" for="{{ form.can_assign_staff.id_for_label }}">
+                                    {{ form.can_assign_staff.label }}
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger mt-3">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                <div class="text-start border-top pt-4 mt-5">
+                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                        <i class="fas fa-save me-2"></i> Update Role
+                    </button>
+                    <a href="{% url 'manage_roles' %}" class="btn btn-secondary btn-lg ms-3">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,687 @@
+{% extends "portech/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+	<section class="hero-wrap">
+		<div class="home-slider owl-carousel js-fullheight">
+			{% for hero1 in hero %}
+			<div class="slider-item js-fullheight" style="background-image:url('{% if hero1.image %}{{ hero1.image.url }}{% endif %}');">
+				<div class="overlay"></div> 
+				<div class="container">
+					<div class="row d-flex no-gutters slider-text js-fullheight align-items-center align-items-stretch">
+						<div class="col-md-6 d-flex align-items-center justify-content-center">
+							<a href="{% if hero1.video %}{{ hero1.video.url }}{% endif %}" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+								<span class="fa fa-play"></span>
+							</a>
+						</div>
+						<div class="col-md-6 ftco-animate d-flex align-items-center">
+							<div class="text w-100">
+								<span class="subheading">{{ hero1.title }}</span>
+								<h1>{{ hero1.excerpt }}</h1>
+								<p class="mb-4">{{ hero1.content }}</p>
+								<p><a href="hero1.btn_url" class="btn btn-primary">{{ hero1.btn_text}}</a> <a href="#" class="btn btn-white">View Portfolio</a></p>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			{% endfor %}
+{% comment %} 
+			<div class="slider-item js-fullheight" style="background-image:url({%  static "portech/images/bg_1.jpg" %});">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row d-flex no-gutters slider-text js-fullheight align-items-center align-items-stretch">
+						<div class="col-md-6 d-flex align-items-center justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+								<span class="fa fa-play"></span>
+							</a>
+						</div>
+						<div class="col-md-6 ftco-animate d-flex align-items-center">
+							<div class="text w-100">
+								<span class="subheading">Welcome to Portech</span>
+								<h1>We Create Website the Way You Want with Portech</h1>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<p><a href="#" class="btn btn-primary">Learn More</a> <a href="#" class="btn btn-white">View Portfolio</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item js-fullheight" style="background-image:url({%  static "portech/images/bg_2.jpg" %} );">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row d-flex no-gutters slider-text js-fullheight align-items-center align-items-stretch">
+						<div class="col-md-6 d-flex align-items-center justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+								<span class="fa fa-play"></span>
+							</a>
+						</div>
+						<div class="col-md-6 ftco-animate d-flex align-items-center">
+							<div class="text w-100 mb-5">
+								<span class="subheading">Creative Portfolio</span>
+								<h1>We Provide Effective for Business Solutions</h1>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<p><a href="#" class="btn btn-primary">Learn More</a> <a href="#" class="btn btn-white">View Portfolio</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> {% endcomment %}
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-services ftco-no-pt bg-light">
+		<div class="container container-2">
+			<div class="row">
+
+				{% for skill in skills|slice:":4" %}
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="services">
+						<div class="icon d-flex"><span class="{{ skill.icon }}"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">{{ skill.title }}</h3>
+							<p>{{ skill.excerpt }}</p>
+						</div>
+						<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+					</div>      
+				</div>
+				{% endfor %}
+
+				{% comment %} 
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="services">
+						<div class="icon d-flex"><span class="flaticon-web-programming"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Development</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+						</div>
+						<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+					</div>    
+				</div>
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="services">
+						<div class="icon d-flex"><span class="flaticon-branding"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Branding</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+						</div>
+						<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+					</div>      
+				</div>
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="services">
+						<div class="icon d-flex"><span class="flaticon-stats"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Search Optimization</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+						</div>
+						<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+					</div>      
+				</div> {% endcomment %}
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-no-pt ftco-about img">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-12 about-intro">
+					<div class="row d-flex">
+						<div class="col-md-6 d-flex align-items-stretch">
+							<div class="img d-flex align-items-center align-self-stretch justify-content-center" style="background-image:url({%  static "portech/images/about-1.jpg" %} );">
+								<div class="year-stablish text-center">
+									<div class="icon2"><span class="flaticon-light-bulb"></span></div>
+									<div class="text">
+										<strong class="number" data-number="42">0</strong>
+										<span>Year Of<br> Experienced</span>
+									</div>
+								</div>
+								<div class="img-2 d-flex align-items-center justify-content-center" style="background-image:url({%  static "portech/images/about.jpg" %} );">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 pl-md-5 py-5">
+							<div class="row justify-content-start pb-3">
+								<div class="col-md-12 heading-section ftco-animate">
+									<span class="subheading">Welcome to Portech</span>
+									<h2 class="mb-4">We Are Portech Creative Studio Agency</h2>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+									<div class="row mb-4">
+										<div class="col-md-6 ftco-animate">
+											<div class="services-2 d-flex align-items-center">
+												<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-conversation"></span></div>
+												<div class="media-body">
+													<h3 class="heading">Expert<br> Team</h3>
+												</div>
+											</div>    
+										</div>
+										<div class="col-md-6 ftco-animate">
+											<div class="services-2 d-flex align-items-center">
+												<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-light-bulb"></span></div>
+												<div class="media-body">
+													<h3 class="heading">Solution<br> For Business</h3>
+												</div>
+											</div>    
+										</div>
+									</div>
+									<p><a href="#" class="btn btn-primary">Get in touch with us</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section bg-darken">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-3 pr-md-4 pb-lg-0 pb-4 d-flex align-items-end">
+					{% if teams %}
+					<div class="heading-section heading-section-white ftco-animate text-center text-lg-left mb-4">
+						<span class="subheading">Team &amp; Staff</span>	
+						<h2>{{ teams.title }}</h2>
+						<p>{{ teams.excerpt }}</p>
+						<p><a href="#" class="btn btn-primary">View All Staff</a></p>
+					</div>
+					{% endif %}
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+						
+						{% for teams in team|slice:":3" %}
+						<div class="col-md-4 coco-animate d-flex">
+							<div class="staff">
+								<div class="img-wrap d-flex align-items-stretch">
+									<div class="img align-self-stretch" style="background-image: url('{% if teams.image %}{{ teams.image.url}}{% endif %}');"></div>
+								</div>
+								<div class="text pt-3 px-3 pb-4 text-center">
+									<h3>{{ teams.title }}</h3>
+									<span class="position">{{ teams.excerpt }}</span>
+									<div class="faded">
+										<ul class="ftco-social text-center">
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+{% comment %} 
+						<div class="col-md-4 ftco-animate d-flex">
+							<div class="staff">
+								<div class="img-wrap d-flex align-items-stretch">
+									<div class="img align-self-stretch" style="background-image: url({%  static "portech/images/staff-2.jpg" %} );"></div>
+								</div>
+								<div class="text pt-3 px-3 pb-4 text-center">
+									<h3>Lloyd Wilson</h3>
+									<span class="position">Web Developer</span>
+									<div class="faded">
+										<ul class="ftco-social text-center">
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 ftco-animate d-flex">
+							<div class="staff">
+								<div class="img-wrap d-flex align-items-stretch">
+									<div class="img align-self-stretch" style="background-image: url({%  static "portech/images/staff-3.jpg" %} );"></div>
+								</div>
+								<div class="text pt-3 px-3 pb-4 text-center">
+									<h3>Lloyd Wilson</h3>
+									<span class="position">Web Developer</span>
+									<div class="faded">
+										<ul class="ftco-social text-center">
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+											<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div> {% endcomment %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({%  static "portech/images/bg_4.jpg" %} );">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 d-flex counter-wrap ftco-animate">
+					<div class="block-18 d-flex align-items-center">
+						<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-file"></span></div>
+						<div class="text pl-3">
+							<strong class="number" data-number="4800">0</strong>
+							<span>Project Completed</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex counter-wrap ftco-animate">
+					<div class="block-18 d-flex align-items-center">
+						<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-waiter"></span></div>
+						<div class="text pl-3">
+							<strong class="number" data-number="1000">0</strong>
+							<span>Our Staff</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex counter-wrap ftco-animate">
+					<div class="block-18 d-flex align-items-center">
+						<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-customer-service"></span></div>
+						<div class="text pl-3">
+							<strong class="number" data-number="350">0</strong>
+							<span>Services Provide</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex counter-wrap ftco-animate">
+					<div class="block-18 d-flex align-items-center">
+						<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-good-review"></span></div>
+						<div class="text pl-3">
+							<strong class="number" data-number="7650">0</strong>
+							<span>Happy Customers</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">{{ designs.title }}</span>
+					<h2 class="mb-4">{{ designs.excerpt }}</h2>
+				</div>
+			</div>
+			<div class="row">
+				{% for designs in design %}
+				<div class="col-md-4 ftco-animate">
+					<div class="project-wrap img d-flex align-items-end" style="background-image: url({% if designs.image %}{{ designs.image.url }}{% endif %});">
+						<div class="text">
+							<span>{{ designs.title }}</span>
+							<h3><a href="portfolio-single.html">{{ designs.excerpt }}</a></h3>
+							<a href="portfolio-single.html" class="icon d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+{% comment %} 				
+				<div class="col-md-4 ftco-animate">
+					<div class="project-wrap img d-flex align-items-end" style="background-image: url({%  static "portech/images/work-2.jpg" %} );">
+						<div class="text">
+							<span>Web Design</span>
+							<h3><a href="portfolio-single.html">Creative Design</a></h3>
+							<a href="portfolio-single.html" class="icon d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 ftco-animate">
+					<div class="project-wrap img d-flex align-items-end" style="background-image: url({%  static "portech/images/work-3.jpg" %} );">
+						<div class="text">
+							<span>Web Design</span>
+							<h3><a href="portfolio-single.html">Creative Design</a></h3>
+							<a href="portfolio-single.html" class="icon d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 ftco-animate">
+					<div class="project-wrap img d-flex align-items-end" style="background-image: url({%  static "portech/images/work-4.jpg" %} );">
+						<div class="text">
+							<span>Web Design</span>
+							<h3><a href="portfolio-single.html">Creative Design</a></h3>
+							<a href="portfolio-single.html" class="icon d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 ftco-animate">
+					<div class="project-wrap img d-flex align-items-end" style="background-image: url({%  static "portech/images/work-5.jpg" %} );">
+						<div class="text">
+							<span>Web Design</span>
+							<h3><a href="portfolio-single.html">Creative Design</a></h3>
+							<a href="portfolio-single.html" class="icon d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 ftco-animate">
+					<div class="project-wrap img d-flex align-items-end" style="background-image: url({%  static "portech/images/work-6.jpg" %} );">
+						<div class="text">
+							<span>Web Design</span>
+							<h3><a href="portfolio-single.html">Creative Design</a></h3>
+							<a href="portfolio-single.html" class="icon d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div> {% endcomment %}
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-faqs services-section">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-6 mb-5 md-md-0">
+					<div class="img w-100 mb-4" style="background-image: url({{ whyus.media_file.url }});"></div>
+					<h2 class="heading-section2 mb-3">{{ whyus.title }}</h2>
+					{% for whys in why %}
+					<div class="services-3">
+						<h3>{{ whys.title }}</h3>
+						<p>{{ whys.excerpt }}</p>
+					</div>
+					{% endfor %}
+					{% comment %} <div class="services-3">
+						<h3>Better Strategy with High Quality Business</h3>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					</div> {% endcomment %}
+				</div>
+				<div class="col-md-6 heading-section pl-md-5 ftco-animate d-flex align-items-center">
+					<div class="w-100 mb-4 mb-md-0">
+						<span class="subheading">{{ faqs.title}}</span>
+						<h2 class="mb-5">{{ faqs.excerpt }}</h2>
+						<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
+							
+						{% for faqs in faq %}
+						<div class="card">
+							<div class="card-header p-0" id="{{ faqs.addfield1 }}">
+								<h2 class="mb-0">
+									<button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link {% if not forloop.first %}collapsed{% endif %}" data-parent="#accordion" data-toggle="collapse" data-target="#{{ faqs.addfield2 }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="{{ faqs.addfield2 }}">
+										<p class="mb-0">{{ faqs.title }}</p>
+										<i class="fa" aria-hidden="true"></i>
+									</button>
+								</h2>
+							</div>
+
+							<div class="collapse {% if forloop.first %}show{% endif %}" id="{{ faqs.addfield2 }}" role="tabpanel" aria-labelledby="{{ faqs.addfield1 }}">
+								<div class="card-body py-3 px-0">
+									<ol>
+										{{ faqs.content|safe }}
+									</ol>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+						{% comment %} 
+							<div class="card">
+								<div class="card-header p-0" id="headingTwo" role="tab">
+									<h2 class="mb-0">
+										<button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+											<p class="mb-0">How to manage your Website?</p>
+											<i class="fa" aria-hidden="true"></i>
+										</button>
+									</h2>
+								</div>
+								<div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+									<div class="card-body py-3 px-0">
+										<ol>
+											<li>Far far away, behind the word mountains</li>
+											<li>Consonantia, there live the blind texts</li>
+											<li>When she reached the first hills of the Italic Mountains</li>
+											<li>Bookmarksgrove, the headline of Alphabet Village</li>
+											<li>Separated they live in Bookmarksgrove right</li>
+										</ol>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header p-0" id="headingThree" role="tab">
+									<h2 class="mb-0">
+										<button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+											<p class="mb-0">How to grow your investments funds?</p>
+											<i class="fa" aria-hidden="true"></i>
+										</button>
+									</h2>
+								</div>
+								<div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
+									<div class="card-body py-3 px-0">
+										<ol>
+											<li>Far far away, behind the word mountains</li>
+											<li>Consonantia, there live the blind texts</li>
+											<li>When she reached the first hills of the Italic Mountains</li>
+											<li>Bookmarksgrove, the headline of Alphabet Village</li>
+											<li>Separated they live in Bookmarksgrove right</li>
+										</ol>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header p-0" id="headingFour" role="tab">
+									<h2 class="mb-0">
+										<button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+											<p class="mb-0">What are those requirements for businesses?</p>
+											<i class="fa" aria-hidden="true"></i>
+										</button>
+									</h2>
+								</div>
+								<div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
+									<div class="card-body py-3 px-0">
+										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									</div>
+								</div>
+							</div>
+						</div> {% endcomment %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-section testimony-section bg-light">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row pb-4">
+				<div class="col-md-7 heading-section heading-section-white ftco-animate">
+					<span class="subheading">Testimonial</span>
+					<h2 class="mb-4">What Are Clients Says</h2>
+				</div>
+			</div>
+		</div>
+		<div class="container container-2">
+			<div class="row ftco-animate">
+				<div class="col-md-12">
+					<div class="carousel-testimony owl-carousel">
+						<div class="item">
+							<div class="testimony-wrap py-4">
+								<div class="text">
+									<p class="star">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</p>
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+									<div class="d-flex align-items-center">
+										<div class="user-img" style="background-image: url({%  static "portech/images/person_1.jpg" %} )"></div>
+										<div class="pl-3">
+											<p class="name">Roger Scott</p>
+											<span class="position">Marketing Manager</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap py-4">
+								<div class="text">
+									<p class="star">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</p>
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+									<div class="d-flex align-items-center">
+										<div class="user-img" style="background-image: url({%  static "portech/images/person_2.jpg" %} )"></div>
+										<div class="pl-3">
+											<p class="name">Roger Scott</p>
+											<span class="position">Marketing Manager</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap py-4">
+								<div class="text">
+									<p class="star">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</p>
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+									<div class="d-flex align-items-center">
+										<div class="user-img" style="background-image: url({%  static "portech/images/person_3.jpg" %} )"></div>
+										<div class="pl-3">
+											<p class="name">Roger Scott</p>
+											<span class="position">Marketing Manager</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap py-4">
+								<div class="text">
+									<p class="star">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</p>
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+									<div class="d-flex align-items-center">
+										<div class="user-img" style="background-image: url({%  static "portech/images/person_1.jpg" %} )"></div>
+										<div class="pl-3">
+											<p class="name">Roger Scott</p>
+											<span class="position">Marketing Manager</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap py-4">
+								<div class="text">
+									<p class="star">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</p>
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+									<div class="d-flex align-items-center">
+										<div class="user-img" style="background-image: url({%  static "portech/images/person_2.jpg" %} )"></div>
+										<div class="pl-3">
+											<p class="name">Roger Scott</p>
+											<span class="position">Marketing Manager</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center pb-4">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Our Blog</span>
+					<h2 class="mb-4">Recent Post</h2>
+				</div>
+			</div>
+			<div class="row d-flex">
+				<div class="col-lg-4 ftco-animate">
+					<div class="blog-entry">
+						<a href="blog-single.html" class="block-20" style="background-image: url('{%  static "portech/images/image_1.jpg" %} ');">
+						</a>
+						<div class="text d-block text-center">
+							<div class="meta">
+								<p>
+									<a href="#"><span class="fa fa-calendar mr-2"></span>Sept. 23, 2020</a>
+									<a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
+									<a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
+								</p>
+							</div>
+							<h3 class="heading"><a href="#">Marketing Strategies for Digital Ecosystem</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+							<hr>
+							<p class="mb-0"><a href="#" class="btn-custom">Read more</a></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 ftco-animate">
+					<div class="blog-entry">
+						<a href="blog-single.html" class="block-20" style="background-image: url('{%  static "portech/images/image_2.jpg" %} ');">
+						</a>
+						<div class="text d-block text-center">
+							<div class="meta">
+								<p>
+									<a href="#"><span class="fa fa-calendar mr-2"></span>Sept. 23, 2020</a>
+									<a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
+									<a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
+								</p>
+							</div>
+							<h3 class="heading"><a href="#">Marketing Strategies for Digital Ecosystem</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+							<hr>
+							<p class="mb-0"><a href="#" class="btn-custom">Read more</a></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 ftco-animate">
+					<div class="blog-entry">
+						<a href="blog-single.html" class="block-20" style="background-image: url('{%  static "portech/images/image_3.jpg" %} ');">
+						</a>
+						<div class="text d-block text-center">
+							<div class="meta">
+								<p>
+									<a href="#"><span class="fa fa-calendar mr-2"></span>Sept. 23, 2020</a>
+									<a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
+									<a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
+								</p>
+							</div>
+							<h3 class="heading"><a href="#">Marketing Strategies for Digital Ecosystem</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+							<hr>
+							<p class="mb-0"><a href="#" class="btn-custom">Read more</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock content %}

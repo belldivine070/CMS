@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load category_tags %}
+
+
+{% block content %}
+<div class="container-fluid mt-4"> 
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2>All Widgets</h2>
+            <p class="text-muted">Search, Sort, Edit, and Delete Content Widgets</p>
+        </div>
+        <a href="{% url 'widget_create' %}" class="btn btn-primary">
+            <i class="bi bi-plus-square"></i> + Add New Widget
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-striped table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">S/N</th>
+                        <th style="width: 20%;">Title</th>
+                        <th style="width: 15%;">Slug</th> 
+                        <th style="width: 35%;">Used Fields</th> 
+                        <th style="width: 5%;">Posts</th>
+                        <th style="width: 5%;">Status</th>
+                        <th style="width: 15%;">Action</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for widget in widgets %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'post_list_by_widget' widget_slug=widget.slug %}">
+                                <strong>{{ widget.title }}</strong>
+                            </a>
+                        </td>
+                        <td>{{ widget.slug }}</td> 
+                        
+                        <td>
+                            <p class="mb-0 small">
+                                {% for field_slug in widget.child_fields %}
+                                    {% with field_label=POST_FIELD_CHOICES|get_item:field_slug %} 
+                                        <span class="badge text-bg-secondary me-1 mb-1">{{ field_label|default:field_slug }}</span>
+                                    {% endwith %}
+                                {% endfor %}
+                            </p>
+                        </td>
+
+                        <td>{{ widget.post_count }}</td> 
+                        <td><span class="badge text-bg-success">Active</span></td>
+                        
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'widget_update' slug=widget.slug %}" class="btn btn-sm btn-info" title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                
+                                {% if widget.post_count == 0 %}
+                                    <form method="post" action="{% url 'widget_delete' slug=widget.slug %}" style="display: inline;" 
+                                          onsubmit="return confirm('Are you sure you want to delete {{ widget.name }}?');">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <button class="btn btn-sm btn-secondary" disabled title="Delete disabled: posts exist.">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center py-4">No content Widgets defined yet.</td>
+                    </tr>
+                    {% endfor %}
+                    
+                     <thead>
+                        <tr>
+                            <th style="width: 5%;">S/N</th>
+                            <th style="width: 20%;">Title</th>
+                            <th style="width: 15%;">Slug</th> 
+                            <th style="width: 35%;">Used Fields</th> 
+                            <th style="width: 5%;">Posts</th>
+                            <th style="width: 5%;">Status</th>
+                            <th style="width: 15%;">Action</th> 
+                        </tr>
+                    </thead>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
