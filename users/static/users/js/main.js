@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // });
 // $(document).ready(function () {
-//     $.datetimepicker.setLocale('en');
+//    $.datetimepicker.setLocale('en');
 //     $('#datetimepicker').datetimepicker({
 //         format: 'Y-m-d H:i',
 //         timepicker: true,
