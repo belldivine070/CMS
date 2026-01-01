@@ -2,7 +2,7 @@ import logging
 from celery import shared_task, group
 from django.apps import apps
 from django.utils import timezone
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 
 logger = logging.getLogger(__name__)
 
@@ -29,70 +29,91 @@ def send_single_email_task(self, recipient, subject, body, from_email):
 
 
 @shared_task(bind=True)
-def send_broadcast_task(self, post_id, recipient_list, from_email=None, subject=None):
-    """Send broadcast to multiple recipients using group tasks."""
-    NewsPost = apps.get_model('users', 'NewsPost')
-    AppVariable = apps.get_model('users', 'AppVariable')
+def send_broadcast_task(self, post_id, recipient_list, from_email):
+    post = NewsPost.objects.get(id=post_id)
 
     try:
-        post = NewsPost.objects.get(id=post_id)
-    except NewsPost.DoesNotExist:
-        logger.error(f"Broadcast post {post_id} not found")
-        return
-
-    if not from_email:
-        # Use system default if none provided
-        from_email = AppVariable.get_setting('OFFICIAL_EMAIL', 'noreply@company.com')
-
-    email_subject = subject or post.subject or post.title
-
-    post.status = 'sending'
-    post.save(update_fields=['status'])
-
-    # Spawn a task for each recipient
-    job = group(
-        send_single_email_task.s(
-            recipient=recipient,
-            subject=email_subject,
-            body=post.content,
-            from_email=from_email
+        send_mail(
+            subject=post.subject,
+            message=post.content,
+            from_email=from_email,
+            recipient_list=recipient_list,
+            fail_silently=False,
         )
-        for recipient in recipient_list
-    )
+        post.status = 'sent'
+        post.save(update_fields=['status'])
 
-    job.apply_async()
-
-    # Mark as sent
-    post.status = 'sent'
-    post.last_sent_at = timezone.now()
-    post.save(update_fields=['status', 'last_sent_at'])
-
-    logger.info(f"Broadcast COMPLETED | post_id={post_id}")
+    except Exception as e:
+        post.status = 'failed'
+        post.save(update_fields=['status'])
+        raise self.retry(exc=e, countdown=60)
 
 
-@shared_task
-def check_scheduled_broadcasts():
-    """Celery Beat task to check for scheduled posts that should be sent now."""
-    NewsPost = apps.get_model('users', 'NewsPost')
-    now = timezone.now()
+# @shared_task(bind=True)
+# def send_broadcast_task(self, post_id, recipient_list, from_email=None, subject=None):
+#     """Send broadcast to multiple recipients using group tasks."""
+#     NewsPost = apps.get_model('users', 'NewsPost')
+#     AppVariable = apps.get_model('users', 'AppVariable')
 
-    # Only posts still in draft/scheduled and with time <= now
-    pending_posts = NewsPost.objects.filter(
-        status__in=['draft', 'scheduled'],
-        scheduled_time__lte=now
-    )
+#     try:
+#         post = NewsPost.objects.get(id=post_id)
+#     except NewsPost.DoesNotExist:
+#         logger.error(f"Broadcast post {post_id} not found")
+#         return
 
-    for post in pending_posts:
-        # Gather recipients dynamically
-        recipient_list = post.gather_emails()
-        if recipient_list:
-            send_broadcast_task.delay(
-                post_id=post.id,
-                recipient_list=recipient_list,
-                from_email=post.sender_email
-            )
-            post.status = 'sending'
-            post.save(update_fields=['status'])
+#     if not from_email:
+#         # Use system default if none provided
+#         from_email = AppVariable.get_setting('OFFICIAL_EMAIL', 'noreply@company.com')
+
+#     email_subject = subject or post.subject or post.title
+
+#     post.status = 'sending'
+#     post.save(update_fields=['status'])
+
+#     # Spawn a task for each recipient
+#     job = group(
+#         send_single_email_task.s(
+#             recipient=recipient,
+#             subject=email_subject,
+#             body=post.content,
+#             from_email=from_email
+#         )
+#         for recipient in recipient_list
+#     )
+
+#     job.apply_async()
+
+#     # Mark as sent
+#     post.status = 'sent'
+#     post.last_sent_at = timezone.now()
+#     post.save(update_fields=['status', 'last_sent_at'])
+
+#     logger.info(f"Broadcast COMPLETED | post_id={post_id}")
+
+
+# @shared_task
+# def check_scheduled_broadcasts():
+#     """Celery Beat task to check for scheduled posts that should be sent now."""
+#     NewsPost = apps.get_model('users', 'NewsPost')
+#     now = timezone.now()
+
+#     # Only posts still in draft/scheduled and with time <= now
+#     pending_posts = NewsPost.objects.filter(
+#         status__in=['draft', 'scheduled'],
+#         scheduled_time__lte=now
+#     )
+
+#     for post in pending_posts:
+#         # Gather recipients dynamically
+#         recipient_list = post.gather_emails()
+#         if recipient_list:
+#             send_broadcast_task.delay(
+#                 post_id=post.id,
+#                 recipient_list=recipient_list,
+#                 from_email=post.sender_email
+#             )
+#             post.status = 'sending'
+#             post.save(update_fields=['status'])
 
 
 

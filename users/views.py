@@ -589,65 +589,51 @@ class BroadcastCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        self.object = form.save()
+        post = form.save(commit=False)
 
-        # Gather recipients
+        # Default sender
+        if not post.sender_email:
+            post.sender_email = settings.DEFAULT_FROM_EMAIL
+
+        post.save()
+
         recipient_list = self.request.POST.getlist('final_recipients')
         if not recipient_list:
-            recipient_list = self.object.gather_emails()
+            recipient_list = post.gather_emails()
 
-        if not recipient_list:
-            messages.error(self.request, "No recipients found.")
-            return redirect(self.success_url)
-
-        # Get scheduled time from form
-        scheduled_time = self.object.scheduled_time
-
-        # Detect user timezone from hidden input
+        # Detect browser timezone
         user_tz_str = self.request.POST.get('user_timezone', 'UTC')
-        try:
-            user_tz = ZoneInfo(user_tz_str)
-        except Exception:
-            user_tz = ZoneInfo('UTC')
+        user_tz = ZoneInfo(user_tz_str)
 
-        # Make aware datetime in user's timezone
+        scheduled_time = post.scheduled_time
+        now_utc = timezone.now()
+
         if scheduled_time:
             if is_naive(scheduled_time):
                 scheduled_time = make_aware(scheduled_time, user_tz)
-            scheduled_time_utc = scheduled_time.astimezone(ZoneInfo('UTC'))
+
+            scheduled_time_utc = scheduled_time.astimezone(ZoneInfo("UTC"))
+
+            if scheduled_time_utc <= now_utc:
+                # SEND IMMEDIATELY
+                send_broadcast_task.delay(post.id, recipient_list, post.sender_email)
+                post.status = 'sending'
+            else:
+                # SCHEDULE
+                send_broadcast_task.apply_async(
+                    args=[post.id, recipient_list, post.sender_email],
+                    eta=scheduled_time_utc
+                )
+                post.status = 'scheduled'
         else:
-            scheduled_time_utc = None
+            # No time → immediate
+            send_broadcast_task.delay(post.id, recipient_list, post.sender_email)
+            post.status = 'sending'
 
-        current_time_utc = timezone_now()
-
-        # Decide whether to send immediately or schedule
-        if scheduled_time_utc and scheduled_time_utc > current_time_utc:
-            # Schedule for future
-            send_broadcast_task.apply_async(
-                kwargs={
-                    'post_id': self.object.id,
-                    'recipient_list': recipient_list,
-                    'from_email': self.object.sender_email
-                },
-                eta=scheduled_time_utc
-            )
-            self.object.status = 'scheduled'
-            messages.success(
-                self.request,
-                f"📅 Broadcast scheduled for {scheduled_time.strftime('%Y-%m-%d %H:%M:%S')} ({user_tz_str})"
-            )
-        else:
-            # Send immediately
-            send_broadcast_task.delay(
-                post_id=self.object.id,
-                recipient_list=recipient_list,
-                from_email=self.object.sender_email
-            )
-            self.object.status = 'sending'
-            messages.success(self.request, "🚀 Broadcast is being sent immediately.")
-
-        self.object.save(update_fields=['status'])
+        post.save(update_fields=['status'])
         return redirect(self.success_url)
+
+
 
     # def form_valid(self, form):
     #     self.object = form.save()
@@ -671,27 +657,26 @@ class BroadcastCreateView(LoginRequiredMixin, CreateView):
     #     except Exception:
     #         user_tz = ZoneInfo('UTC')
 
-    #     # Convert naive datetime to aware in user's timezone
-    #     if scheduled_time and is_naive(scheduled_time):
-    #         scheduled_time = make_aware(scheduled_time, timezone=user_tz)
-    #     elif scheduled_time:
-    #         # If already aware, convert to user's timezone first
-    #         scheduled_time = scheduled_time.astimezone(user_tz)
+    #     # Make aware datetime in user's timezone
+    #     if scheduled_time:
+    #         if is_naive(scheduled_time):
+    #             scheduled_time = make_aware(scheduled_time, user_tz)
+    #         scheduled_time_utc = scheduled_time.astimezone(ZoneInfo('UTC'))
+    #     else:
+    #         scheduled_time_utc = None
 
-    #     current_time = timezone_now()
+    #     current_time_utc = timezone_now()
 
     #     # Decide whether to send immediately or schedule
-    #     if scheduled_time and scheduled_time > current_time:
-    #         # Convert scheduled time to UTC for Celery ETA
-    #         send_time_utc = scheduled_time.astimezone(ZoneInfo('UTC'))
-
+    #     if scheduled_time_utc and scheduled_time_utc > current_time_utc:
+    #         # Schedule for future
     #         send_broadcast_task.apply_async(
     #             kwargs={
     #                 'post_id': self.object.id,
     #                 'recipient_list': recipient_list,
     #                 'from_email': self.object.sender_email
     #             },
-    #             eta=send_time_utc
+    #             eta=scheduled_time_utc
     #         )
     #         self.object.status = 'scheduled'
     #         messages.success(
@@ -699,7 +684,7 @@ class BroadcastCreateView(LoginRequiredMixin, CreateView):
     #             f"📅 Broadcast scheduled for {scheduled_time.strftime('%Y-%m-%d %H:%M:%S')} ({user_tz_str})"
     #         )
     #     else:
-    #         # Past or no time: send immediately
+    #         # Send immediately
     #         send_broadcast_task.delay(
     #             post_id=self.object.id,
     #             recipient_list=recipient_list,
@@ -711,42 +696,7 @@ class BroadcastCreateView(LoginRequiredMixin, CreateView):
     #     self.object.save(update_fields=['status'])
     #     return redirect(self.success_url)
 
-        
-    # def form_valid(self, form):
-    #     # 1. Save the model instance (this stores the title, subject, content, and scheduled_time)
-    #     self.object = form.save()
-        
-    #     # 2. Get the list of emails checked in the UI
-    #     recipient_list = self.request.POST.getlist('final_recipients')
 
-    #     # 3. Logic for Scheduling
-    #     if self.object.scheduled_time and self.object.scheduled_time > timezone.now():
-    #         # We don't trigger the task now. 
-    #         # Your "celery beat" (check_scheduled_broadcasts) will pick this up later.
-    #         messages.info(self.request, f"📅 Broadcast scheduled for {self.object.scheduled_time}")
-    #         return redirect(self.get_success_url())
-
-    #     # 4. Immediate Sending via Celery
-    #     if not recipient_list:
-    #         messages.warning(self.request, "Broadcast saved, but no recipients were selected.")
-    #         return redirect(self.get_success_url())
-
-    #     # 🚀 TRIGGER CELERY WORKER
-    #     # We pass the list of emails to the background task
-    #     from_email = self.object.sender_email 
-    #     send_broadcast_task.delay(
-    #         post_id=self.object.id,
-    #         recipient_list=recipient_list,
-    #         from_email=self.object.sender_email
-    #     )
-
-    #     # Update local status so the UI knows it's being handled
-    #     self.object.status = 'sent'
-    #     self.object.last_sent_at = timezone.now()
-    #     self.object.save()
-
-        # messages.success(self.request, f"🚀 Queued {len(recipient_list)} emails for background dispatch!")
-        # return redirect(self.get_success_url())
 
 class BroadcastDeleteView(LoginRequiredMixin, DeleteView):
     model = NewsPost

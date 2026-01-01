@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from celery.schedules import crontab
-
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -90,21 +90,27 @@ WSGI_APPLICATION = 'BGTECH.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CUSTOMDASHBOARD',  # <-- Change this to the database you created in phpMyAdmin
-        'USER': 'root',                # Default XAMPP MySQL username
-        'PASSWORD': '',                # Default XAMPP MySQL password (empty string)
-        'HOST': '127.0.0.1',           # Or 'localhost'
-        'PORT': '3306',                # Default MySQL port
-        # Optional: Add OPTIONS for strict SQL mode if you encounter issues
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'CUSTOMDASHBOARD',  # <-- Change this to the database you created in phpMyAdmin
+#         'USER': 'root',                # Default XAMPP MySQL username
+#         'PASSWORD': '',                # Default XAMPP MySQL password (empty string)
+#         'HOST': '127.0.0.1',           # Or 'localhost'
+#         'PORT': '3306',                # Default MySQL port
+#         # Optional: Add OPTIONS for strict SQL mode if you encounter issues
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
+DATABASES = {
+    'default': dj_database_url.config(
+        # This reads the DATABASE_URL environment variable on Render
+        default=os.environ.get('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -226,7 +232,7 @@ EMAIL_PORT = 465               # Changed to 587 when using TSL
 EMAIL_USE_TLS = False          # Changed from True
 EMAIL_USE_SSL = True           # Changed from False
 EMAIL_HOST_USER = '{{ OFFICIAL_EMAIL }}'
-EMAIL_HOST_PASSWORD = 'pqwxldgheioakaxv'
+EMAIL_HOST_PASSWORD = 'qnvtlryfopznwmnp'
 # DEFAULT_FROM_EMAIL = '{{ OFFICIAL_EMAIL }}'
 
 # LOGGING = {
