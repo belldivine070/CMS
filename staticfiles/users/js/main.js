@@ -22,7 +22,7 @@ function initSlugGenerator() {
 
   if (titleField && slugField) {
     titleField.addEventListener("input", function () {
-      const slugValue = titleField.value
+      const slugValue = titleField.value  
         .toLowerCase()
         .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
         .replace(/\s+/g, "-") // collapse whitespace and replace by -
@@ -102,4 +102,50 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 10000);
   });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const picker = document.querySelector('input[type="datetime-local"]');
+
+  if (picker) {
+    // 1. Get current local time
+    const now = new Date();
+
+    // 2. Adjust for timezone offset to get local ISO string
+    // This ensures 'now' in Port Harcourt is 'now' in the picker
+    const offset = now.getTimezoneOffset() * 60000;
+    const localISOTime = new Date(now - offset).toISOString().slice(0, 16);
+
+    // 3. Set the minimum allowed date to right now
+    picker.min = localISOTime;
+
+    // 4. Optional: If the field is empty (new post), default to now
+    if (!picker.value) {
+      picker.value = localISOTime;
+    }
+
+    // 5. Visual Validation: Highlight if user picks a future date
+    picker.addEventListener("change", function () {
+      const selectedDate = new Date(this.value);
+      const currentDate = new Date();
+
+      if (selectedDate > currentDate) {
+        this.classList.add("border-indigo-500", "bg-indigo-50");
+        console.log("Scheduled for future dispatch.");
+      } else {
+        this.classList.remove("border-indigo-500", "bg-indigo-50");
+      }
+    });
+  }
+});
+$(document).ready(function () {
+    $.datetimepicker.setLocale('en');
+    $('#datetimepicker').datetimepicker({
+        format: 'Y-m-d H:i',
+        timepicker: true,
+        datepicker: true,
+        step: 5
+    });
 });
