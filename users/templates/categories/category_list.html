@@ -3,142 +3,138 @@
 {% load widget_tweaks %}
 {% load category_tags %}
 
+
 {% block content %}
-<div class="container-fluid mt-3 mt-md-4"> 
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
-        <div class="mb-3 mb-md-0">
-            <h2 class="h3 mb-1">All Categories</h2>
-            <p class="text-muted small mb-0">Search, Sort, Edit, and Delete Content Categories</p>
-        </div>
-        <a href="{% url 'category_create' %}" class="btn btn-primary shadow-sm">
-            <i class="bi bi-plus-square"></i> + Add New Category
-        </a>
-    </div>
+<div class="container-fluid mt-4"> 
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2>All Categories</h2>
+            <p class="text-muted">Search, Sort, Edit, and Delete Content Categories</p>
+        </div>
+        <a href="{% url 'category_create' %}" class="btn btn-primary">
+            <i class="bi bi-plus-square"></i> + Add New Category
+        </a>
+    </div>
+    
 
-    <div class="card shadow-sm border-0">
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle mb-0" style="min-width: 1000px;">
-                    <thead class="table-dark">
-                        <tr>
-                            <th class="ps-3" style="width: 5%;">S/N</th>
-                            <th style="width: 20%;">Title</th>
-                            <th style="width: 15%;">Slug</th> 
-                            <th style="width: 30%;">Used Fields</th> 
-                            <th class="text-center" style="width: 8%;">Posts</th>
-                            <th class="text-center" style="width: 7%;">Status</th>
-                            <th class="text-end pe-3" style="width: 15%;">Action</th> 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for category in categories %}
-                        <tr>
-                            <td class="ps-3">{{ forloop.counter }}</td>
-                            <td>
-                                <a href="{% url 'post_list_by_category' category_slug=category.slug %}" class="text-decoration-none fw-bold">
-                                    {{ category.title }}
-                                </a>
-                            </td>
-                            <td class="text-muted small">{{ category.slug }}</td> 
-                            
-                            <td>
-                                <div class="d-flex flex-wrap gap-1">
-                                    {% for field_slug in category.child_fields %}
-                                        {% with field_label=POST_FIELD_CHOICES|get_item:field_slug %} 
-                                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size: 0.7rem;">
-                                                {{ field_label|default:field_slug }}
-                                            </span>
-                                        {% endwith %}
-                                    {% endfor %}
-                                </div>
-                                
-                                {% if category.required_fields %}
-                                    <div class="mt-1" style="font-size: 0.7rem;">
-                                        <span class="text-danger fw-bold">Required:</span> 
-                                        <span class="text-muted">
-                                            {% for req_slug in category.required_fields %}
-                                                {{ POST_FIELD_CHOICES|get_item:req_slug|default:req_slug }}{% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
-                                        </span>
-                                    </div>
-                                {% endif %}
-                            </td>
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-striped table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">S/N</th>
+                        <th style="width: 20%;">Title</th>
+                        <th style="width: 15%;">Slug</th> 
+                        <th style="width: 35%;">Used Fields</th> 
+                        <th style="width: 5%;">Posts</th>
+                        <th style="width: 5%;">Status</th>
+                        <th style="width: 15%;">Action</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'post_list_by_category' category_slug=category.slug %}">
+                                <strong>{{ category.title }}</strong>
+                            </a>
+                        </td>
+                        <td>{{ category.slug }}</td> 
+                        
+                        <td>
+                            <p class="mb-0 small">
+                                {% for field_slug in category.child_fields %}
+                                    {% with field_label=POST_FIELD_CHOICES|get_item:field_slug %} 
+                                        <span class="badge text-bg-secondary me-1 mb-1">{{ field_label|default:field_slug }}</span>
+                                    {% endwith %}
+                                {% endfor %}
+                            </p>
+                            
+                            {% if category.required_fields %}
+                                <small class="text-danger d-block mt-1">
+                                    Required: 
+                                    {% for req_slug in category.required_fields %}
+                                        {{ POST_FIELD_CHOICES|get_item:req_slug|default:req_slug }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </small>
+                            {% endif %}
+                        </td>
 
-                            <td class="text-center">
-                                <span class="badge rounded-pill bg-info text-dark">{{ category.post_count }}</span>
-                            </td> 
-                            
-                            <td class="text-center">
-                                <span class="badge text-bg-success" style="font-size: 0.75rem;">Active</span>
-                            </td>
-                            
-                            <td class="text-end pe-3">
-                                <div class="btn-group shadow-sm">
-                                    <a href="{% url 'category_update' slug=category.slug %}" class="btn btn-sm btn-info" title="Edit">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    
-                                    {% if category.post_count == 0 %}
-                                        <form method="post" action="{% url 'category_delete' slug=category.slug %}" class="d-inline" 
-                                              onsubmit="return confirm('Delete: {{ category.title }}?');">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-                                    {% else %}
-                                        <button class="btn btn-sm btn-secondary" disabled title="Posts exist">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    {% endif %}
-                                </div>
-                            </td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="7" class="text-center py-4">No content categories defined yet.</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    <thead class="table-light">
-                        <tr>
-                            <th class="ps-3">S/N</th>
-                            <th>Title</th>
-                            <th>Slug</th> 
-                            <th>Used Fields</th> 
-                            <th class="text-center">Posts</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-end pe-3">Action</th> 
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="d-md-none text-center mt-2 text-muted small">
-        <i class="bi bi-arrow-left-right"></i> Swipe table horizontally to see more
-    </div>
+{% comment %}                         
+                       <td>
+                            <p class="mb-0 small">
+                                {% for field_slug in category.child_fields %}
+                                    {% with field_label=POST_FIELD_CHOICES|get_item:field_slug %} 
+                                        <span class="badge {% if field_slug in 'title,slug' %}text-bg-primary{% else %}text-bg-secondary{% endif %} me-1 mb-1">
+                                            {{ field_label|default:field_slug }}
+                                        </span>
+                                    {% endwith %}
+                                {% endfor %}
+                            </p>
+                            
+                            {% if category.required_fields %}
+                                <small class="text-danger d-block mt-1">
+                                    Required: 
+                                    {% for req_slug in category.required_fields %}
+                                        {{ POST_FIELD_CHOICES|get_item:req_slug|default:req_slug }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </small>
+                            {% endif %}
+                        </td> {% endcomment %}
+
+
+                        <td>{{ category.post_count }}</td> 
+                        
+                        <td><span class="badge text-bg-success">Active</span></td>
+                        
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Category Actions">
+                                {# URL Fix: NOW USING slug=category.slug #}
+                                <a href="{% url 'category_update' slug=category.slug %}" class="btn btn-sm btn-info" title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                
+                                {% if category.post_count == 0 %}
+                                    {# URL Fix: NOW USING slug=category.slug #}
+                                    <form method="post" action="{% url 'category_delete' slug=category.slug %}" style="display: inline;" 
+                                          onsubmit="return confirm('Are you sure you want to delete the category: {{ category.name }}? This action is irreversible.');">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete Category">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <button class="btn btn-sm btn-secondary" disabled title="Cannot delete: {{ category.post_count }} posts exist.">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No content categories defined yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {# Footer Thead as requested #}
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">S/N</th>
+                        <th style="width: 20%;">Title</th>
+                        <th style="width: 15%;">Slug</th> 
+                        <th style="width: 35%;">Used Fields</th> 
+                        <th style="width: 5%;">Posts</th>
+                        <th style="width: 5%;">Status</th>
+                        <th style="width: 15%;">Action</th> 
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 </div>
-
-<style>
-    /* Prevent text from wrapping too aggressively in narrow columns */
-    .table td, .table th {
-        white-space: nowrap;
-    }
-    
-    /* Allow the "Used Fields" column to wrap so it doesn't get infinitely wide */
-    .table td:nth-child(4) {
-        white-space: normal;
-        min-width: 250px;
-    }
-
-    /* Custom scrollbar styling for the table for a cleaner look */
-    .table-responsive::-webkit-scrollbar {
-        height: 6px;
-    }
-    .table-responsive::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 10px;
-    }
-</style>
 {% endblock content %}
+
+
+make it mobile responsive
