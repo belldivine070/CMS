@@ -135,8 +135,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = '/bg-admin/login/'
 LOGOUT_REDIRECT_URL = '/bg-admin/login/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 # ⚡️ CRITICAL ADDITION: Use Custom Email Backend ⚡️
 AUTHENTICATION_BACKENDS = [
@@ -162,12 +160,17 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/' 
+STATIC_ROOT = BASE_DIR / 'staticfiles' # This is where files go for production
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # STATICFILES_DIRS = [
 # os.path.join(BASE_DIR, 'static'),
 # ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
