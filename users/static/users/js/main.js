@@ -6,7 +6,7 @@
 function initSummernote() {
   if (window.jQuery && typeof $.fn.summernote !== "undefined") {
     $("#summernote").summernote({
-      height: 300,
+      height: 700,
       focus: true,
     });
   }
@@ -37,53 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initSummernote();
   initSlugGenerator();
 
-  /* SIDEBAR & OVERLAY LOGIC */
-  const sidebar = document.getElementById("sidebar");
-  const mobileOverlay = document.getElementById("mobileOverlay");
-  const desktopToggle = document.getElementById("desktopSidebarToggle");
-  const mobileToggle = document.getElementById("mobileSidebarToggle");
-
-  function toggleSidebar() {
-    if (window.innerWidth <= 768) {
-      sidebar.classList.toggle("mobile-active");
-      if (mobileOverlay) mobileOverlay.classList.toggle("active");
-    } else {
-      sidebar.classList.toggle("d-none");
-    }
-  }
-
-  if (desktopToggle) desktopToggle.addEventListener("click", toggleSidebar);
-  if (mobileToggle) mobileToggle.addEventListener("click", toggleSidebar);
-
-  /* DARK MODE LOGIC */
-  const body = document.body;
-  const navbar = document.querySelector(".navbar");
-  const darkModeToggle = document.getElementById("darkModeToggle");
-  const moon = document.getElementById("moonIcon");
-  const sun = document.getElementById("sunIcon");
-
-  if (localStorage.getItem("theme") === "dark") {
-    navbar?.classList.add("dark-mode");
-    body.classList.add("dark-background");
-    moon?.classList.add("d-none");
-    sun?.classList.remove("d-none");
-  }
-
-  darkModeToggle?.addEventListener("click", function () {
-    navbar.classList.toggle("dark-mode");
-    body.classList.toggle("dark-background");
-
-    const isDark = navbar.classList.contains("dark-mode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-
-    if (isDark) {
-      moon?.classList.add("d-none");
-      sun?.classList.remove("d-none");
-    } else {
-      sun?.classList.add("d-none");
-      moon?.classList.remove("d-none");
-    }
-  });
 
   /* ALERT DISMISSAL */
   const alerts = document.querySelectorAll(".alert");
@@ -104,52 +57,75 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Selectors
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("mobileOverlay");
+  const toggleBtn = document.getElementById("sidebarToggle");
+  const backBtn = document.getElementById("backToTop");
 
+  const themeBtn = document.getElementById("darkModeToggle");
+  const navbar = document.querySelector(".navbar");
+  const moon = document.getElementById("moonIcon");
+  const sun = document.getElementById("sunIcon");
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   const picker = document.querySelector('input[type="datetime-local"]');
+  /* 1. SIDEBAR LOGIC */
+  function toggleSidebar() {
+    if (window.innerWidth <= 768) {
+      sidebar.classList.toggle("mobile-active");
+      overlay?.classList.toggle("active");
+    } else {
+      sidebar.classList.toggle("d-none");
+    }
+  }
 
-//   if (picker) {
-//     // 1. Get current local time
-//     const now = new Date();
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      toggleSidebar();
+    });
+  }
 
-//     // 2. Adjust for timezone offset to get local ISO string
-//     // This ensures 'now' in Port Harcourt is 'now' in the picker
-//     const offset = now.getTimezoneOffset() * 60000;
-//     const localISOTime = new Date(now - offset).toISOString().slice(0, 16);
+  if (overlay) {
+    overlay.addEventListener("click", toggleSidebar);
+  }
 
-//     // 3. Set the minimum allowed date to right now
-//     picker.min = localISOTime;
+  /* 2. THEME TOGGLE (NAVBAR ONLY) */
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      navbar?.classList.add("dark-mode");
+      moon?.classList.add("d-none");
+      sun?.classList.remove("d-none");
+    } else {
+      navbar?.classList.remove("dark-mode");
+      sun?.classList.add("d-none");
+      moon?.classList.remove("d-none");
+    }
+  }
 
-//     // 4. Optional: If the field is empty (new post), default to now
-//     if (!picker.value) {
-//       picker.value = localISOTime;
-//     }
+  themeBtn?.addEventListener("click", () => {
+    const isDark = !navbar.classList.contains("dark-mode");
+    const themeChoice = isDark ? "dark" : "light";
+    localStorage.setItem("theme", themeChoice);
+    applyTheme(themeChoice);
+  });
 
-//     // 5. Visual Validation: Highlight if user picks a future date
-//     picker.addEventListener("change", function () {
-//       const selectedDate = new Date(this.value);
-//       const currentDate = new Date();
+  // Load saved theme on startup
+  applyTheme(localStorage.getItem("theme") || "light");
 
-//       if (selectedDate > currentDate) {
-//         this.classList.add("border-indigo-500", "bg-indigo-50");
-//         console.log("Scheduled for future dispatch.");
-//       } else {
-//         this.classList.remove("border-indigo-500", "bg-indigo-50");
-//       }
-//     });
-//   }
-// });
-// $(document).ready(function () {
-//    $.datetimepicker.setLocale('en');
-//     $('#datetimepicker').datetimepicker({
-//         format: 'Y-m-d H:i',
-//         timepicker: true,
-//         datepicker: true,
-//         step: 5
-//     });
-// });
+  /* 3. BACK TO TOP LOGIC */
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      backBtn.style.display = "flex";
+    } else {
+      backBtn.style.display = "none";
+    }
+  });
 
+  backBtn?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
 
 
 
