@@ -21,7 +21,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '.onrender.com'  # This allows any sub-domain on Render
 ]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:8000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:8000', 'https://cms-n9e1.onrender.com']
 
 
 # Check if we are in production based on an environment variable
