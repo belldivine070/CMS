@@ -23,21 +23,6 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:8000', 'https://cms-n9e1.onrender.com']
 
 
-# Check if we are in production based on an environment variable
-# If 'PRODUCTION' isn't set in .env, it defaults to False
-IS_PRODUCTION = os.environ.get('PRODUCTION', 'False').lower() == 'true'
-
-
-# Only force HTTPS if we are in production
-SECURE_SSL_REDIRECT = IS_PRODUCTION
-SECURE_HSTS_SECONDS = 31536000 if IS_PRODUCTION else 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = IS_PRODUCTION
-SECURE_HSTS_PRELOAD = IS_PRODUCTION
-
-# Cookies should only be 'Secure' if we are on HTTPS
-SESSION_COOKIE_SECURE = IS_PRODUCTION
-CSRF_COOKIE_SECURE = IS_PRODUCTION
-# --- APPLICATION DEFINITION ---
 INSTALLED_APPS = [
     'django_summernote',
     'users.apps.UsersConfig',
@@ -103,6 +88,7 @@ DATABASES = {
 # if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
 #     DATABASES['default'].setdefault('OPTIONS', {})
 #     DATABASES['default']['OPTIONS']['init_command'] = "SET sql_mode='STRICT_TRANS_TABLES'"
+
 
 # --- AUTHENTICATION ---
 AUTH_USER_MODEL = 'users.CustomUser'
