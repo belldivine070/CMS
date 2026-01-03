@@ -22,7 +22,7 @@ gunicorn==23.0.0
 idna==3.11
 kombu==5.6.1
 packaging==25.0
-python-dotenv==1.0.1
+python-dotenv==1.2.1
 pillow==12.0.0
 prompt_toolkit==3.0.52
 psycopg2-binary==2.9.11
@@ -39,4 +39,5 @@ vine==5.1.0
 wcwidth==0.2.14
 webencodings==0.5.1
 whitenoise==6.11.0
+
 
