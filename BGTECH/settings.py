@@ -79,14 +79,22 @@ TEMPLATES = [
     },
 ]
 
-# --- DATABASE CONFIGURATION ---
 DATABASES = {
     'default': dj_database_url.config(
-        # default=os.environ.get('DATABASE_URL'),
-        default= BASE_DIR / 'db.sqlite3',
+        # We cast the Path object to a string explicitly
+        default=f"sqlite:///{str(BASE_DIR / 'db.sqlite3')}",
         conn_max_age=600,
     )
 }
+    
+# --- DATABASE CONFIGURATION ---
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # default=os.environ.get('DATABASE_URL'),
+#         default= BASE_DIR / 'db.sqlite3',
+#         conn_max_age=600,
+#     )
+# }
 # Add this right below the DATABASES dictionary to ensure strict mode
 # if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
 #     DATABASES['default'].setdefault('OPTIONS', {})
