@@ -9,9 +9,9 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env') 
 
-SECRET_KEY = 'django-insecure-7+ok!u*d0s#n!ida$djxkjm-*=u4_r822)(&l+qkm-$ezx9h*g'
+# SECRET_KEY = 'django-insecure-7+ok!u*d0s#n!ida$djxkjm-*=u4_r822)(&l+qkm-$ezx9h*g'
 
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.environ.get('DEBUG')
 ALLOWED_HOSTS = [
