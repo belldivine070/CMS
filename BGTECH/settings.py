@@ -84,13 +84,12 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = '/bg-admin/login/'
 LOGOUT_REDIRECT_URL = '/bg-admin/login/'
 
-<<<<<<< HEAD
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-=======
+]   
 
 # ⚡️ CRITICAL ADDITION: Use Custom Email Backend ⚡️
 AUTHENTICATION_BACKENDS = [
@@ -99,7 +98,6 @@ AUTHENTICATION_BACKENDS = [
     
     # 2. Default backend for checking permissions (is_staff, is_superuser)
     'django.contrib.auth.backends.ModelBackend',
->>>>>>> 2031fedcdffa546a3e7a5147dba5d1936dda5f60
 ]
 
 # --- DEPLOYMENT SECURITY ---
@@ -117,11 +115,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
-<<<<<<< HEAD
 # --- CELERY CONFIGURATION ---
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
-=======
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -188,7 +185,6 @@ SUMMERNOTE_CONFIG = {
 # Replace 'localhost' with your Redis server address if different
 CELERY_BROKER_URL = 'j'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
->>>>>>> 2031fedcdffa546a3e7a5147dba5d1936dda5f60
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
@@ -219,8 +215,7 @@ SUMMERNOTE_CONFIG = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
-=======
+
 #     'handlers': {
 #         'console': {
 #             'class': 'logging.StreamHandler',
@@ -256,4 +251,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         'level': 'INFO',
 #     },
 # }
->>>>>>> 2031fedcdffa546a3e7a5147dba5d1936dda5f60
