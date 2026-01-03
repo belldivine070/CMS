@@ -1,180 +1,78 @@
 {% extends "layout.html" %}
 {% load static %}
-{% load category_tags %}
-{% load widget_tweaks %}
-
-{% block content %}
-    <div class="container-fluid mt-4"> 
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 gap-3">
-            <div>
-                <h2>{{ widget.title }} Posts</h2>
-                <p class="text-muted mb-0">Manage all posts for the {{ widget.title }} widget.</p>
-            </div>
-
-            <div class="d-flex gap-2 w-100 w-md-auto">
-                <a href="{% url 'widget_list' %}" class="btn btn-outline-secondary flex-fill">
-                    <i class="bi bi-arrow-left"></i> Back
-                </a>
-                <a href="{% url 'widget_post_create' widget_slug=widget.slug %}" class="btn btn-primary flex-fill">
-                    <i class="bi bi-plus-lg"></i> Add Post
-                </a>
-            </div>
-        </div>
-        
-        <div class="card shadow-sm">
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th style="width: 5%;" class="ps-3">S/N</th>
-                                <th style="width: 30%;">Title</th>
-                                <th class="d-none d-md-table-cell" style="width: 15%;">Widget</th> 
-                                <th class="d-none d-md-table-cell" style="width: 15%;">Author</th>
-                                <th class="d-none d-md-table-cell" style="width: 15%;">Date</th>
-                                <th style="width: 10%;">Status</th>
-                                <th class="text-end pe-3" style="width: 10%;">Action</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for post in posts %}
-                            <tr>
-                                <td class="ps-3">{{ forloop.counter }}</td>
-                                <td>
-                                    <strong>{{ post.title }}</strong>
-                                    
-                                    <div class="d-md-none small text-muted mt-1">
-                                        <span><i class="bi bi-layout-text-window"></i> {{ post.widget.title }}</span> | 
-                                        <span><i class="bi bi-person"></i> {{ post.author.username }}</span> | 
-                                        <span><i class="bi bi-calendar"></i> {{ post.updated_at|date:"M d" }}</span>
-                                    </div>
-                                </td>
-                                
-                                <td class="d-none d-md-table-cell">
-                                    <a href="{% url 'widget_list' %}" class="text-decoration-none text-secondary">
-                                        {{ post.widget.title }}
-                                    </a>
-                                </td> 
-                                <td class="d-none d-md-table-cell text-muted">
-                                    {{ post.author.get_full_name|default:post.author.username }}
-                                </td>
-                                <td class="d-none d-md-table-cell text-muted">
-                                    {{ post.updated_at|date:"M d, Y" }}
-                                </td>
-                                
-                                <td>
-                                    {% if post.is_published %}
-                                        <span class="badge rounded-pill bg-success">Live</span>
-                                    {% else %}
-                                        <span class="badge rounded-pill bg-warning text-dark">Draft</span>
-                                    {% endif %}
-                                </td>
-                                
-                                <td class="text-end pe-3">
-                                    <div class="btn-group shadow-sm" role="group">
-                                        <a href="{% url 'widget_post_edit' widget_slug=post.widget.slug post_slug=post.slug %}" class="btn btn-sm btn-outline-info" title="Edit">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                        
-                                        <form method="post" 
-                                              action="{% url 'widget_post_delete' widget_slug=post.widget.slug post_slug=post.slug %}" 
-                                              class="d-inline" 
-                                              onsubmit="return confirm('Delete post: {{ post.title }}?');">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <td colspan="7" class="text-center py-5 text-muted">No posts found for this widget.</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-
-
-<!-- {% extends "layout.html" %}
-{% load static %}
 {% load widget_tweaks %}
 {% load category_tags %}
-
 
 {% block content %}
 <div class="container-fluid mt-4"> 
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4 gap-3">
         <div>
-            <h2>All Widgets</h2>
-            <p class="text-muted">Search, Sort, Edit, and Delete Content Widgets</p>
+            <h2 class="h4 mb-1">All Widgets</h2>
+            <p class="text-muted small mb-0">Manage your content widgets</p>
         </div>
-        <a href="{% url 'widget_create' %}" class="btn btn-primary">
-            <i class="bi bi-plus-square"></i> + Add New Widget
+        <a href="{% url 'widget_create' %}" class="btn btn-primary btn-sm py-2">
+            <i class="bi bi-plus-square"></i> Add New Widget
         </a>
     </div>
 
-    <div class="card shadow-sm">
+    <div class="card shadow-sm border-0">
         <div class="card-body p-0">
-            <table class="table table-striped table-hover mb-0">
-                <thead>
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
                     <tr>
-                        <th style="width: 5%;">S/N</th>
-                        <th style="width: 20%;">Title</th>
-                        <th style="width: 15%;">Slug</th> 
-                        <th style="width: 35%;">Used Fields</th> 
-                        <th style="width: 5%;">Posts</th>
-                        <th style="width: 5%;">Status</th>
-                        <th style="width: 15%;">Action</th> 
+                        <th class="ps-3" style="width: 5%;">#</th>
+                        <th>Title</th>
+                        <th class="d-none d-lg-table-cell">Slug</th> 
+                        <th class="d-none d-md-table-cell">Used Fields</th> 
+                        <th class="text-center">Posts</th>
+                        <th class="text-end pe-3">Action</th> 
                     </tr>
                 </thead>
                 <tbody>
                     {% for widget in widgets %}
                     <tr>
-                        <td>{{ forloop.counter }}</td>
+                        <td class="ps-3 text-muted small">{{ forloop.counter }}</td>
                         <td>
-                            <a href="{% url 'post_list_by_widget' widget_slug=widget.slug %}">
-                                <strong>{{ widget.title }}</strong>
+                            <a href="{% url 'post_list_by_widget' widget_slug=widget.slug %}" class="text-decoration-none fw-bold">
+                                {{ widget.title }}
                             </a>
-                        </td>
-                        <td>{{ widget.slug }}</td> 
-                        
-                        <td>
-                            <p class="mb-0 small">
-                                {% for field_slug in widget.child_fields %}
-                                    {% with field_label=POST_FIELD_CHOICES|get_item:field_slug %} 
-                                        <span class="badge text-bg-secondary me-1 mb-1">{{ field_label|default:field_slug }}</span>
-                                    {% endwith %}
-                                {% endfor %}
-                            </p>
+                            <div class="d-md-none text-muted" style="font-size: 0.7rem;">
+                                {{ widget.post_count }} Posts 
+                            </div>
                         </td>
 
-                        <td>{{ widget.post_count }}</td> 
-                        <td><span class="badge text-bg-success">Active</span></td>
+                        <td class="d-none d-lg-table-cell text-muted small">{{ widget.slug }}</td> 
                         
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a href="{% url 'widget_update' slug=widget.slug %}" class="btn btn-sm btn-info" title="Edit">
-                                    <i class="bi bi-pencil-square"></i>
+                        <td class="d-none d-md-table-cell">
+                            <div class="d-flex flex-wrap gap-1">
+                                {% for field_slug in widget.child_fields %}
+                                    {% with field_label=POST_FIELD_CHOICES|get_item:field_slug %} 
+                                        <span class="badge border text-dark bg-light fw-normal">{{ field_label|default:field_slug }}</span>
+                                    {% endwith %}
+                                {% endfor %}
+                            </div>
+                        </td>
+
+                        <td class="text-center">
+                            <span class="badge rounded-pill bg-secondary-subtle text-secondary">{{ widget.post_count }}</span>
+                        </td>
+                        
+                        <td class="text-end pe-3">
+                            <div class="btn-group">
+                                <a href="{% url 'widget_update' slug=widget.slug %}" class="btn btn-sm btn-light border" title="Edit">
+                                    <i class="bi bi-pencil"></i>
                                 </a>
                                 
                                 {% if widget.post_count == 0 %}
-                                    <form method="post" action="{% url 'widget_delete' slug=widget.slug %}" style="display: inline;" 
-                                          onsubmit="return confirm('Are you sure you want to delete {{ widget.name }}?');">
+                                    <form method="post" action="{% url 'widget_delete' slug=widget.slug %}" class="d-inline">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-sm btn-light border text-danger ms-1" onclick="return confirm('Delete {{ widget.name }}?');">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
                                 {% else %}
-                                    <button class="btn btn-sm btn-secondary" disabled title="Delete disabled: posts exist.">
-                                        <i class="bi bi-trash"></i>
+                                    <button class="btn btn-sm btn-light border ms-1" disabled>
+                                        <i class="bi bi-trash text-muted"></i>
                                     </button>
                                 {% endif %}
                             </div>
@@ -182,24 +80,12 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="7" class="text-center py-4">No content Widgets defined yet.</td>
+                        <td colspan="6" class="text-center py-5 text-muted">No widgets found.</td>
                     </tr>
                     {% endfor %}
-                    
-                     <thead>
-                        <tr>
-                            <th style="width: 5%;">S/N</th>
-                            <th style="width: 20%;">Title</th>
-                            <th style="width: 15%;">Slug</th> 
-                            <th style="width: 35%;">Used Fields</th> 
-                            <th style="width: 5%;">Posts</th>
-                            <th style="width: 5%;">Status</th>
-                            <th style="width: 15%;">Action</th> 
-                        </tr>
-                    </thead>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-{% endblock content %} -->
+{% endblock content %}
