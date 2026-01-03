@@ -15,7 +15,12 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = False
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = [
+    'cms-n9e1.onrender.com', 
+    '127.0.0.1', 
+    'localhost',
+    '.onrender.com'  # This allows any sub-domain on Render
+]
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:8000']
 
 
