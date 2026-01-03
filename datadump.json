@@ -1,0 +1,1887 @@
+[
+{
+    "model": "users.appvariable",
+    "pk": 1,
+    "fields": {
+        "var_name": "APP_EMAIL",
+        "var_value": "belldivine070@gmail.com",
+        "description": "Email Address That Will Be Used To Send Messages To Clients",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 2,
+    "fields": {
+        "var_name": "APP_EMAILPWD",
+        "var_value": "belldivine070",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 3,
+    "fields": {
+        "var_name": "APP_MOBILE",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 4,
+    "fields": {
+        "var_name": "APP_NAME",
+        "var_value": "BG TECH",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 5,
+    "fields": {
+        "var_name": "APP_PORTAL",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 6,
+    "fields": {
+        "var_name": "APP_SHORTCODE",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 7,
+    "fields": {
+        "var_name": "APP_SMSAPI",
+        "var_value": "2345678",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 8,
+    "fields": {
+        "var_name": "APP_SMSEMAIL",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 9,
+    "fields": {
+        "var_name": "APP_SMSNAME",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 10,
+    "fields": {
+        "var_name": "APP_SMSPWD",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 11,
+    "fields": {
+        "var_name": "CONTACT_ADDRESS",
+        "var_value": "203 Fake St. Mountain View, San Francisco, California, USA",
+        "description": "203 Fake St. Mountain View, San Francisco, California, USA",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 12,
+    "fields": {
+        "var_name": "CONTACT_PERSON1",
+        "var_value": "+234 7047137084",
+        "description": "07047137084",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 13,
+    "fields": {
+        "var_name": "CONTACT_PERSON2",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 14,
+    "fields": {
+        "var_name": "CONTACT_PERSON3",
+        "var_value": "",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2018-08-27T23:24:27Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 15,
+    "fields": {
+        "var_name": "CONTACT_PERSON4",
+        "var_value": "",
+        "description": "For Whatsapp Link",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 16,
+    "fields": {
+        "var_name": "FACEBOOK",
+        "var_value": "belldivine070",
+        "description": "Facebook Handle",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 17,
+    "fields": {
+        "var_name": "INSTAGRAM",
+        "var_value": "https://www.instagram.com/belldivine080?igsh=a2hiNnU4cnljNGVj&utm_source=qr",
+        "description": "Instagram Handle",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 18,
+    "fields": {
+        "var_name": "LINKEDIN",
+        "var_value": "https://www.linkedin.com/in/bell-gam-404152221",
+        "description": "Linkedin Handle",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 19,
+    "fields": {
+        "var_name": "OFFICIAL_EMAIL",
+        "var_value": "belldivine070@gmail.com",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 20,
+    "fields": {
+        "var_name": "SITE_HITS",
+        "var_value": "",
+        "description": "Number Of Times The Site Has Been Visited",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 21,
+    "fields": {
+        "var_name": "SLOGAN",
+        "var_value": "Far far away, behind the word mountains, far from the countries.",
+        "description": "",
+        "isreadonly": 0,
+        "lastupdated": "2018-08-27T23:29:10Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 22,
+    "fields": {
+        "var_name": "TWITTER",
+        "var_value": "https://x.com/belldivine080?s=21",
+        "description": "Twitter Handle",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.appvariable",
+    "pk": 23,
+    "fields": {
+        "var_name": "YOUTUBE",
+        "var_value": "belldivine070",
+        "description": "Youtube Handle",
+        "isreadonly": 0,
+        "lastupdated": "2025-11-20T22:44:00Z"
+    }
+},
+{
+    "model": "users.role",
+    "pk": 1,
+    "fields": {
+        "name": "Super Administrator",
+        "slug": "super_admin",
+        "can_create_user": true,
+        "can_assign_staff": true
+    }
+},
+{
+    "model": "users.role",
+    "pk": 2,
+    "fields": {
+        "name": "General Manager",
+        "slug": "sub_manager",
+        "can_create_user": true,
+        "can_assign_staff": true
+    }
+},
+{
+    "model": "users.role",
+    "pk": 3,
+    "fields": {
+        "name": "Staff",
+        "slug": "staff",
+        "can_create_user": false,
+        "can_assign_staff": false
+    }
+},
+{
+    "model": "users.role",
+    "pk": 12,
+    "fields": {
+        "name": "Managers",
+        "slug": "managers",
+        "can_create_user": true,
+        "can_assign_staff": false
+    }
+},
+{
+    "model": "users.role",
+    "pk": 13,
+    "fields": {
+        "name": "Clients",
+        "slug": "clients",
+        "can_create_user": false,
+        "can_assign_staff": false
+    }
+},
+{
+    "model": "users.category",
+    "pk": 12,
+    "fields": {
+        "title": "Products",
+        "slug": "products",
+        "excerpt": "",
+        "media_file": "",
+        "child_fields": [
+            "title",
+            "slug",
+            "content",
+            "is_published",
+            "author",
+            "image",
+            "address",
+            "addfield1"
+        ]
+    }
+},
+{
+    "model": "users.category",
+    "pk": 14,
+    "fields": {
+        "title": "Skills",
+        "slug": "skills",
+        "excerpt": "",
+        "media_file": "",
+        "child_fields": [
+            "excerpt",
+            "icon"
+        ]
+    }
+},
+{
+    "model": "users.category",
+    "pk": 15,
+    "fields": {
+        "title": "Our Team",
+        "slug": "our-team",
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country",
+        "media_file": "",
+        "child_fields": [
+            "title",
+            "slug",
+            "excerpt",
+            "image",
+            "addfield1",
+            "addfield2",
+            "addfield3",
+            "addfield4"
+        ]
+    }
+},
+{
+    "model": "users.category",
+    "pk": 16,
+    "fields": {
+        "title": "Recent Portfolio",
+        "slug": "recent-portfolio",
+        "excerpt": "Our Exceptional Quality Work",
+        "media_file": "",
+        "child_fields": [
+            "title",
+            "slug",
+            "excerpt"
+        ]
+    }
+},
+{
+    "model": "users.category",
+    "pk": 17,
+    "fields": {
+        "title": "FAQ",
+        "slug": "faq",
+        "excerpt": "Frequently Ask Question",
+        "media_file": "",
+        "child_fields": [
+            "title",
+            "slug",
+            "content",
+            "addfield1",
+            "addfield2"
+        ]
+    }
+},
+{
+    "model": "users.category",
+    "pk": 18,
+    "fields": {
+        "title": "Why Choose Us for Your Next Project?",
+        "slug": "why-choose-us",
+        "excerpt": "",
+        "media_file": "category_media/{category}/about-2.jpg",
+        "child_fields": [
+            "title",
+            "slug",
+            "excerpt"
+        ]
+    }
+},
+{
+    "model": "users.widget",
+    "pk": 4,
+    "fields": {
+        "title": "Home Slider",
+        "slug": "home-slider",
+        "excerpt": "",
+        "media_file": "",
+        "child_fields": [
+            "title",
+            "slug",
+            "excerpt",
+            "content",
+            "is_published",
+            "btn_url",
+            "btn_text",
+            "video",
+            "image"
+        ]
+    }
+},
+{
+    "model": "users.externalsubscriber",
+    "pk": 22,
+    "fields": {
+        "email": "angel@gmail.com",
+        "ip_address": "127.0.0.1",
+        "region": null,
+        "date_subscribed": "2026-01-01T08:03:45.195Z"
+    }
+},
+{
+    "model": "users.externalsubscriber",
+    "pk": 23,
+    "fields": {
+        "email": "belldivine080@gmail.com",
+        "ip_address": "127.0.0.1",
+        "region": null,
+        "date_subscribed": "2026-01-01T08:05:55.918Z"
+    }
+},
+{
+    "model": "users.externalsubscriber",
+    "pk": 24,
+    "fields": {
+        "email": "convenant@gmail.com",
+        "ip_address": "127.0.0.1",
+        "region": null,
+        "date_subscribed": "2026-01-01T08:12:09.793Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 1,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing",
+        "content": "<p>Testing email</p>",
+        "sender_email": null,
+        "target_audience": "all",
+        "status": "sent",
+        "scheduled_time": null,
+        "last_sent_at": "2025-12-31T19:17:18.791Z",
+        "created_at": "2025-12-31T19:17:12.027Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 2,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-5fa2",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": null,
+        "target_audience": "super_admin",
+        "status": "sent",
+        "scheduled_time": null,
+        "last_sent_at": "2025-12-31T19:18:38.092Z",
+        "created_at": "2025-12-31T19:18:36.008Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 3,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-07d7",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": null,
+        "target_audience": "super_admin",
+        "status": "sent",
+        "scheduled_time": "2025-12-31T20:20:00Z",
+        "last_sent_at": "2026-01-01T07:49:45.728Z",
+        "created_at": "2025-12-31T19:19:17.269Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 4,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-7590",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": null,
+        "target_audience": "super_admin",
+        "status": "sent",
+        "scheduled_time": null,
+        "last_sent_at": "2025-12-31T19:21:15.888Z",
+        "created_at": "2025-12-31T19:21:11.699Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 5,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-0309",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": null,
+        "target_audience": "super_admin",
+        "status": "sent",
+        "scheduled_time": "2025-12-31T20:20:00Z",
+        "last_sent_at": "2026-01-01T07:49:36.944Z",
+        "created_at": "2025-12-31T19:22:55.594Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 6,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-3030",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": null,
+        "target_audience": "super_admin",
+        "status": "sent",
+        "scheduled_time": "2025-12-31T20:20:00Z",
+        "last_sent_at": "2026-01-01T08:16:19.180Z",
+        "created_at": "2026-01-01T08:16:11.978Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 7,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-d595",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": "webmaster@localhost",
+        "target_audience": "super_admin",
+        "status": "sent",
+        "scheduled_time": null,
+        "last_sent_at": "2026-01-01T21:58:00.101Z",
+        "created_at": "2026-01-01T21:57:52.993Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 8,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-a8e2",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": "webmaster@localhost",
+        "target_audience": "all",
+        "status": "sent",
+        "scheduled_time": null,
+        "last_sent_at": "2026-01-01T21:59:20.749Z",
+        "created_at": "2026-01-01T21:59:20.710Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 9,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-ddc5",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": "webmaster@localhost",
+        "target_audience": "super_admin",
+        "status": "scheduled",
+        "scheduled_time": "2026-01-01T23:03:00Z",
+        "last_sent_at": null,
+        "created_at": "2026-01-01T22:02:04.474Z"
+    }
+},
+{
+    "model": "users.newspost",
+    "pk": 10,
+    "fields": {
+        "title": "Testing",
+        "subject": "Testing Mail TimeZone",
+        "slug": "testing-03f8",
+        "content": "<p>Testing email 567</p>",
+        "sender_email": "webmaster@localhost",
+        "target_audience": "super_admin",
+        "status": "scheduled",
+        "scheduled_time": "2026-01-01T23:05:00Z",
+        "last_sent_at": null,
+        "created_at": "2026-01-01T22:04:34.601Z"
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "General Managers",
+        "permissions": [
+            [
+                "add_group",
+                "auth",
+                "group"
+            ],
+            [
+                "change_group",
+                "auth",
+                "group"
+            ],
+            [
+                "delete_permission",
+                "auth",
+                "permission"
+            ],
+            [
+                "view_permission",
+                "auth",
+                "permission"
+            ],
+            [
+                "add_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "change_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "delete_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "view_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "add_appvariable",
+                "users",
+                "appvariable"
+            ],
+            [
+                "change_appvariable",
+                "users",
+                "appvariable"
+            ],
+            [
+                "delete_appvariable",
+                "users",
+                "appvariable"
+            ],
+            [
+                "view_appvariable",
+                "users",
+                "appvariable"
+            ],
+            [
+                "add_customuser",
+                "users",
+                "customuser"
+            ],
+            [
+                "change_customuser",
+                "users",
+                "customuser"
+            ],
+            [
+                "delete_customuser",
+                "users",
+                "customuser"
+            ],
+            [
+                "view_customuser",
+                "users",
+                "customuser"
+            ],
+            [
+                "add_role",
+                "users",
+                "role"
+            ],
+            [
+                "change_role",
+                "users",
+                "role"
+            ],
+            [
+                "delete_role",
+                "users",
+                "role"
+            ],
+            [
+                "view_role",
+                "users",
+                "role"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "staffs",
+        "permissions": [
+            [
+                "view_contenttype",
+                "contenttypes",
+                "contenttype"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "sub-managers",
+        "permissions": [
+            [
+                "view_logentry",
+                "admin",
+                "logentry"
+            ],
+            [
+                "view_group",
+                "auth",
+                "group"
+            ],
+            [
+                "view_permission",
+                "auth",
+                "permission"
+            ],
+            [
+                "add_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "change_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "delete_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "view_contenttype",
+                "contenttypes",
+                "contenttype"
+            ]
+        ]
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "3eskax8s5wqsvx4vhymmshif5xzxwlrx",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQAP_iGlv2rk9Ket4Q2bs24VAi5agQfyeRUkA9x1t0eV36bp3r1N1ZnIUj63wxKKMlLa0BIwtzlDYF0JxMwxDE6TcrmZ512Ft-5OE2KhqHZboXtSvqoLO6jlxfl8P9G_R57rcawSaiZMDaSrEVdoZbdki1aCAA3kjyPsbgNSKGBCkUQ1gxNxtMEJ8vZug_mA:1vUAII:PF16UqEzzGXvm5u2SMOSYz8fQzNC0yB24LfK5GcCyPU",
+        "expire_date": "2025-12-26T21:03:18.965Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "nv1mdlbn7sweahdp0jn18id99uannoe1",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQAP_iGlv2rk9Ket4Q2bs24VAi5agQfyeRUkA9x1t0eV36bp3r1N1ZnIUj63wxKKMlLa0BIwtzlDYF0JxMwxDE6TcrmZ512Ft-5OE2KhqHZboXtSvqoLO6jlxfl8P9G_R57rcawSaiZMDaSrEVdoZbdki1aCAA3kjyPsbgNSKGBCkUQ1gxNxtMEJ8vZug_mA:1vMYYK:eCd4iVCEwevrwZr-KNiitgkHl1-p3OrGpeWPT7rzfL0",
+        "expire_date": "2025-12-05T21:20:24.649Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "uumps6d48bg46byeitejzg8l1q7tr834",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQAP_iGlv2rk9Ket4Q2bs24VAi5agQfyeRUkA9x1t0eV36bp3r1N1ZnIUj63wxKKMlLa0BIwtzlDYF0JxMwxDE6TcrmZ512Ft-5OE2KhqHZboXtSvqoLO6jlxfl8P9G_R57rcawSaiZMDaSrEVdoZbdki1aCAA3kjyPsbgNSKGBCkUQ1gxNxtMEJ8vZug_mA:1vP4sy:8zEbhRiSZ4sdJfvzLp9p6KxPOlAIv5wuyjNhDHU4SUQ",
+        "expire_date": "2025-12-12T20:16:08.571Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "yzpdzjuihfyfos6ikeqf3xzygixb7qs6",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQAP_iGlv2rk9Ket4Q2bs24VAi5agQfyeRUkA9x1t0eV36bp3r1N1ZnIUj63wxKKMlLa0BIwtzlDYF0JxMwxDE6TcrmZ512Ft-5OE2KhqHZboXtSvqoLO6jlxfl8P9G_R57rcawSaiZMDaSrEVdoZbdki1aCAA3kjyPsbgNSKGBCkUQ1gxNxtMEJ8vZug_mA:1vZEyi:wjD2Ij6BflOf3SnJF5Wh9_1K_OrvIlzFEfQKbkG3H6w",
+        "expire_date": "2026-01-09T21:04:04.716Z"
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$AG1TYzjQjEDaYEPW9epYlg$pqr06ta+RDngvb1Jq/PmMqCizg8guwUcpdEL3AG7fnw=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "harmony@gmail.com",
+        "username": "harmony01",
+        "first_name": "Harmony",
+        "last_name": "Bell-Gaam",
+        "full_name": "Harmony Bell-Gaam",
+        "is_subscribed": true,
+        "is_active": true,
+        "is_staff": true,
+        "is_manager": true,
+        "is_online": false,
+        "department": null,
+        "date_joined": "2025-12-26T22:19:37.391Z",
+        "role": 3,
+        "assigned_to": null,
+        "region": null,
+        "religion": null,
+        "tribe": null,
+        "ip_address": null,
+        "racial_info": null,
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "12345678",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "nzepraise@gmail.com",
+        "username": "nzepraise0",
+        "first_name": "praise",
+        "last_name": "nze",
+        "full_name": "praise nze",
+        "is_subscribed": true,
+        "is_active": true,
+        "is_staff": false,
+        "is_manager": true,
+        "is_online": false,
+        "department": null,
+        "date_joined": "2025-11-21T19:54:00.873Z",
+        "role": 3,
+        "assigned_to": [
+            "favour@gmail.com"
+        ],
+        "region": null,
+        "religion": null,
+        "tribe": null,
+        "ip_address": null,
+        "racial_info": null,
+        "profile_image": "",
+        "groups": [
+            [
+                "sub-managers"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$9mavq9YQOAHBr1UidJHASt$5FstMZZK80wCuG1lRHwJFddmgOgHl68i3gzH3AMD22M=",
+        "last_login": "2025-12-26T21:04:04.696Z",
+        "is_superuser": true,
+        "email": "belldivine070@gmail.com",
+        "username": "belldivine070",
+        "first_name": "Divine",
+        "last_name": "bell-gam",
+        "full_name": "Divine bell-gam",
+        "is_subscribed": true,
+        "is_active": true,
+        "is_staff": true,
+        "is_manager": false,
+        "is_online": false,
+        "department": null,
+        "date_joined": "2025-11-20T13:22:00Z",
+        "role": 1,
+        "assigned_to": null,
+        "region": null,
+        "religion": null,
+        "tribe": null,
+        "ip_address": null,
+        "racial_info": null,
+        "profile_image": "profile_images/2025-11-15_1.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$8X7F8osirX6S74PbWbjuxv$F1s/3IzeaX+x+dGgVH5uwxPv3RiLwLxxnSh1EvzVYF4=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "techwixard@gmail.com",
+        "username": "Inimoney234",
+        "first_name": "inimoney",
+        "last_name": "bong",
+        "full_name": "inimoney bong",
+        "is_subscribed": true,
+        "is_active": true,
+        "is_staff": true,
+        "is_manager": false,
+        "is_online": false,
+        "department": null,
+        "date_joined": "2025-12-26T22:21:52Z",
+        "role": 13,
+        "assigned_to": null,
+        "region": null,
+        "religion": null,
+        "tribe": null,
+        "ip_address": null,
+        "racial_info": null,
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$mZbz9wNGwMFc5AiJiadroX$truUpIXPbbFoWHZr1h/Cu3UIRjMULkg/4iY12VaaqK4=",
+        "last_login": "2025-11-21T19:54:51.938Z",
+        "is_superuser": false,
+        "email": "favour@gmail.com",
+        "username": "favour001",
+        "first_name": "favour",
+        "last_name": "bell-gam",
+        "full_name": "favour bell-gam",
+        "is_subscribed": true,
+        "is_active": true,
+        "is_staff": false,
+        "is_manager": false,
+        "is_online": false,
+        "department": null,
+        "date_joined": "2025-11-20T13:29:43.933Z",
+        "role": 2,
+        "assigned_to": [
+            "belldivine070@gmail.com"
+        ],
+        "region": null,
+        "religion": null,
+        "tribe": null,
+        "ip_address": null,
+        "racial_info": "black",
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$bADdwl7boHyhg3SVNT9aV7$4VCyVPn5ilpVwnRc24lav27fltrsohxrGMubI4tU0d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "Chisomnwigwe19@gmail.com",
+        "username": "chisomtuner",
+        "first_name": "chisom",
+        "last_name": "Nwigwe",
+        "full_name": "chisom Nwigwe",
+        "is_subscribed": true,
+        "is_active": true,
+        "is_staff": true,
+        "is_manager": false,
+        "is_online": false,
+        "department": null,
+        "date_joined": "2025-11-21T15:18:41Z",
+        "role": 3,
+        "assigned_to": [
+            "favour@gmail.com"
+        ],
+        "region": null,
+        "religion": null,
+        "tribe": null,
+        "ip_address": null,
+        "racial_info": null,
+        "profile_image": "profile_images/2025-11-15_2.png",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 28,
+    "fields": {
+        "title": "Testing",
+        "slug": "testing-",
+        "category": 12,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": null,
+        "content": "",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/products/testing/2025-11-15_2.png",
+        "video": "",
+        "audio": "",
+        "icon": "",
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T19:52:29.894Z",
+        "updated_at": "2025-12-18T19:52:29.894Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 30,
+    "fields": {
+        "title": "Testin",
+        "slug": "testin",
+        "category": 12,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": null,
+        "content": "",
+        "tags": null,
+        "address": "1st okuta avenue",
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/products/testing/2025-11-15_8.png",
+        "video": "",
+        "audio": "",
+        "icon": "",
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T21:20:54.615Z",
+        "updated_at": "2025-12-18T21:26:09.110Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 31,
+    "fields": {
+        "title": "UX/UI Design",
+        "slug": "uxui-design",
+        "category": 14,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": "flaticon-ux",
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T21:33:05.716Z",
+        "updated_at": "2025-12-18T22:14:17.812Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 32,
+    "fields": {
+        "title": "Development",
+        "slug": "development",
+        "category": 14,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": "flaticon-web-programming",
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T21:39:08.156Z",
+        "updated_at": "2025-12-18T22:15:02.885Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 33,
+    "fields": {
+        "title": "Branding",
+        "slug": "branding",
+        "category": 14,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": "flaticon-branding",
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T21:43:18.718Z",
+        "updated_at": "2025-12-18T22:15:19.459Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 34,
+    "fields": {
+        "title": "Search Optimization",
+        "slug": "search-optimization",
+        "category": 14,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": "flaticon-stats",
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T21:43:58.423Z",
+        "updated_at": "2025-12-18T22:15:34.375Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 35,
+    "fields": {
+        "title": "Lloyd Wilson",
+        "slug": "lloyd-wilson",
+        "category": 15,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "WEB DEVELOPER",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/our-team/lloyd-wilson/staff-2.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T23:29:35.469Z",
+        "updated_at": "2025-12-18T23:37:09.896Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 36,
+    "fields": {
+        "title": "Lloyd Wilson 1",
+        "slug": "lloyd-wilson-1",
+        "category": 15,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "WEB DEVELOPER",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/our-team/lloyd-wilson-1/staff-3.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T23:30:17.364Z",
+        "updated_at": "2025-12-18T23:37:36.999Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 37,
+    "fields": {
+        "title": "Lloyd Wilson 2",
+        "slug": "lloyd-wilson-2",
+        "category": 15,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "WEB DEVELOPER",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/our-team/lloyd-wilson-2/staff-1.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T23:30:35.435Z",
+        "updated_at": "2025-12-18T23:37:51.034Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 38,
+    "fields": {
+        "title": "Web Design",
+        "slug": "web-design",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design/work-1.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:21:29.861Z",
+        "updated_at": "2025-12-19T08:26:07.021Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 39,
+    "fields": {
+        "title": "Web Design 1",
+        "slug": "web-design-1",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-1/work-2.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:27:39.896Z",
+        "updated_at": "2025-12-19T08:41:12.294Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 40,
+    "fields": {
+        "title": "Web Design 2",
+        "slug": "web-design-2",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-2/work-3.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:28:13.438Z",
+        "updated_at": "2025-12-19T08:28:13.438Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 41,
+    "fields": {
+        "title": "Web Design 3",
+        "slug": "web-design-3",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-3/work-4.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:28:43.088Z",
+        "updated_at": "2025-12-19T08:28:43.088Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 42,
+    "fields": {
+        "title": "Web Design 4",
+        "slug": "web-design-4",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-4/work-5.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:29:03.761Z",
+        "updated_at": "2025-12-19T08:29:03.761Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 43,
+    "fields": {
+        "title": "Web Design 5",
+        "slug": "web-design-5",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-5/work-6.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:29:35.795Z",
+        "updated_at": "2025-12-19T08:29:35.795Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 44,
+    "fields": {
+        "title": "Web Design",
+        "slug": "web-design-",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design/work-7.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:30:14.806Z",
+        "updated_at": "2025-12-19T08:30:14.806Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 45,
+    "fields": {
+        "title": "Web Design 7",
+        "slug": "web-design-7",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-7/work-8.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:30:38.189Z",
+        "updated_at": "2025-12-19T08:30:38.189Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 46,
+    "fields": {
+        "title": "Web Design 8",
+        "slug": "web-design-8",
+        "category": 16,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "Creative Design",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "category_posts/recent-portfolio/web-design-8/work-9.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T08:31:32.815Z",
+        "updated_at": "2025-12-19T08:31:32.815Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 47,
+    "fields": {
+        "title": "How To Fixed A Problem",
+        "slug": "how-to-fixed-a-problem",
+        "category": 17,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": null,
+        "content": "<ol><li>Far far away, behind the word mountains</li><li>Consonantia, there live the blind texts</li><li>When she reached the first hills of the Italic Mountains</li><li>Bookmarksgrove, the headline of Alphabet Village</li><li>Separated they live in Bookmarksgrove right<br><br><br></li></ol>",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": "headingFour",
+        "addfield2": "collapseFour",
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T21:01:29.216Z",
+        "updated_at": "2025-12-23T15:41:33.279Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 48,
+    "fields": {
+        "title": "How To Manage Your Website?",
+        "slug": "how-to-manage-your-website",
+        "category": 17,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": null,
+        "content": "<ol><li>Far far away, behind the word mountains</li><li>Consonantia, there live the blind texts</li><li>When she reached the first hills of the Italic Mountains</li><li>Bookmarksgrove, the headline of Alphabet Village</li><li>Separated they live in Bookmarksgrove right<br><br><br></li></ol>",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": "headingThree",
+        "addfield2": "collapseThree",
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T21:02:26.802Z",
+        "updated_at": "2025-12-19T21:55:13.836Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 49,
+    "fields": {
+        "title": "How To Grow Invesment Funds",
+        "slug": "how-to-grow-invesment-funds",
+        "category": 17,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": null,
+        "content": "<ol><li>Far far away, behind the word mountains</li><li>Consonantia, there live the blind texts</li><li>When she reached the first hills of the Italic Mountains</li><li>Bookmarksgrove, the headline of Alphabet Village</li><li>Separated they live in Bookmarksgrove right<br><br><br></li></ol>",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": "headingTwo",
+        "addfield2": "collapseTwo",
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T21:03:14.399Z",
+        "updated_at": "2025-12-19T21:54:50.041Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 50,
+    "fields": {
+        "title": "What Are Those Requiremnts For Businesses",
+        "slug": "what-are-those-requiremnts-for-businesses",
+        "category": 17,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": null,
+        "content": "<ol><li>Far far away, behind the word mountains</li><li>Consonantia, there live the blind texts</li><li>When she reached the first hills of the Italic Mountains</li><li>Bookmarksgrove, the headline of Alphabet Village</li><li>Separated they live in Bookmarksgrove right<br><br></li></ol>",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": "headingOne",
+        "addfield2": "collapseOne",
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T21:04:19.949Z",
+        "updated_at": "2025-12-19T21:55:01.595Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 51,
+    "fields": {
+        "title": "Creative Ideas",
+        "slug": "creative-ideas",
+        "category": 18,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T21:05:48.635Z",
+        "updated_at": "2025-12-19T21:05:48.635Z"
+    }
+},
+{
+    "model": "users.categorypost",
+    "pk": 52,
+    "fields": {
+        "title": "Better Strategy with High Quality Business",
+        "slug": "better-strategy-with-high-quality-business",
+        "category": 18,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
+        "content": null,
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Read More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-19T21:06:06.057Z",
+        "updated_at": "2025-12-19T21:06:06.057Z"
+    }
+},
+{
+    "model": "users.widgetpost",
+    "pk": 4,
+    "fields": {
+        "title": "Welcome to Portech",
+        "slug": "welcome",
+        "widget": 4,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "We Create Website the Way You Want with Portech",
+        "content": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "widget_posts/home-slider/welcome-to-portech/bg_1.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Learn More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T22:26:48.530Z",
+        "updated_at": "2025-12-30T11:33:12.404Z"
+    }
+},
+{
+    "model": "users.widgetpost",
+    "pk": 5,
+    "fields": {
+        "title": "Creative Portfolio",
+        "slug": "creative-portfolio",
+        "widget": 4,
+        "author": [
+            "belldivine070@gmail.com"
+        ],
+        "excerpt": "We Provide Effective for Business Solutions",
+        "content": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        "tags": null,
+        "address": null,
+        "subtitle": null,
+        "shortcodes": null,
+        "image": "widget_posts/home-slider/creative-portfolio/bg_2.jpg",
+        "video": "",
+        "audio": "",
+        "icon": null,
+        "image_align": null,
+        "btn_text": "Learn More",
+        "btn_url": null,
+        "event_date": null,
+        "progress": null,
+        "addfield1": null,
+        "addfield2": null,
+        "addfield3": null,
+        "addfield4": null,
+        "is_published": true,
+        "created_at": "2025-12-18T22:41:38.338Z",
+        "updated_at": "2025-12-30T11:32:53.222Z"
+    }
+}
+]

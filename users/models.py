@@ -10,7 +10,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import timedelta
 from django.core.mail import EmailMessage # Required for BCC and HTML
-from .tasks import send_broadcast_task
 from django.contrib.auth import get_user_model
 
 
