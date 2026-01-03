@@ -14,7 +14,7 @@ load_dotenv(BASE_DIR / '.env')
 # Pull the secret key from an environment variable
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
 ALLOWED_HOSTS = [
     'cms-n9e1.onrender.com', 
     '127.0.0.1', 
