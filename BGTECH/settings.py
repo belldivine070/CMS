@@ -80,12 +80,12 @@ TEMPLATES = [
 ]
 
 DATABASES = {
-    'default': dj_database_url.config(
-        # We cast the Path object to a string explicitly
-        default=f"sqlite:///{str(BASE_DIR / 'db.sqlite3')}",
-        conn_max_age=600,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
     
 # --- DATABASE CONFIGURATION ---
 # DATABASES = {
