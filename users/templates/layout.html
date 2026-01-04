@@ -60,7 +60,7 @@
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <form action="{% url 'logout' %}" method="post">
+                        <form action="{% url 'users:logout' %}" method="post">
                             {% csrf_token %}
                             <button type="submit" class="dropdown-item text-danger fw-bold">Sign out</button>
                         </form>
@@ -82,7 +82,7 @@
 
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="{% url 'index' %}" class="nav-link text-white active">
+                    <a href="{% url 'users:index' %}" class="nav-link text-white active">
                         <i class="bi bi-house-door me-2"></i> Dashboard Home
                     </a>
                 </li>
@@ -94,8 +94,8 @@
                     </a>
                     <div class="collapse ms-3" id="CategoryMenu">
                         <ul class="nav flex-column">
-                            <li><a href="{% url 'category_list' %}" class="nav-link text-white small"><i class="bi bi-list-ul me-2"></i> List All</a></li>
-                            <li><a href="{% url 'category_create' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add New</a></li>
+                            <li><a href="{% url 'users:category_list' %}" class="nav-link text-white small"><i class="bi bi-list-ul me-2"></i> List All</a></li>
+                            <li><a href="{% url 'users:category_create' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add New</a></li>
                         </ul>
                     </div>
                 </li>
@@ -107,8 +107,8 @@
                     </a>
                     <div class="collapse ms-3" id="WidgetMenu">
                         <ul class="nav flex-column">
-                            <li><a href="{% url 'widget_list' %}" class="nav-link text-white small"><i class="bi bi-list-ul me-2"></i> List All</a></li>
-                            <li><a href="{% url 'widget_create' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add New</a></li>
+                            <li><a href="{% url 'users:widget_list' %}" class="nav-link text-white small"><i class="bi bi-list-ul me-2"></i> List All</a></li>
+                            <li><a href="{% url 'users:widget_create' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add New</a></li>
                         </ul>
                     </div>
                 </li>
@@ -120,8 +120,8 @@
                     </a>
                     <div class="collapse ms-3" id="commMenu">
                         <ul class="nav flex-column">
-                            <li><a href="{% url 'broadcast_dashboard' %}" class="nav-link text-white small"><i class="bi bi-envelope me-2"></i> Email Broadcasts</a></li>
-                            <li><a href="{% url 'subscriber_list' %}" class="nav-link text-white small"><i class="bi bi-people me-2"></i> Subscribers</a></li>
+                            <li><a href="{% url 'users:broadcast_dashboard' %}" class="nav-link text-white small"><i class="bi bi-envelope me-2"></i> Email Broadcasts</a></li>
+                            <li><a href="{% url 'users:subscriber_list' %}" class="nav-link text-white small"><i class="bi bi-people me-2"></i> Subscribers</a></li>
                         </ul>
                     </div>
                 </li>
@@ -133,10 +133,10 @@
                     </a>
                     <div class="collapse ms-3" id="usersMenu">
                         <ul class="nav flex-column">
-                            <li><a href="{% url 'manage_users' %}" class="nav-link text-white small"><i class="bi bi-people me-2"></i> Manage Users</a></li>
-                            <li><a href="{% url 'admin_register_user' %}" class="nav-link text-white small"><i class="bi bi-person-plus me-2"></i> Register New</a></li>
-                            <li><a href="{% url 'manage_roles' %}" class="nav-link text-white small"><i class="bi bi-key me-2"></i> Roles & Permissions</a></li>
-                            <li><a href="{% url 'add_role' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add Role</a></li>
+                            <li><a href="{% url 'users:manage_users' %}" class="nav-link text-white small"><i class="bi bi-people me-2"></i> Manage Users</a></li>
+                            <li><a href="{% url 'users:register_user' %}" class="nav-link text-white small"><i class="bi bi-person-plus me-2"></i> Register New</a></li>
+                            <li><a href="{% url 'users:manage_roles' %}" class="nav-link text-white small"><i class="bi bi-key me-2"></i> Roles & Permissions</a></li>
+                            <li><a href="{% url 'users:add_role' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add Role</a></li>
                         </ul>
                     </div>
                 </li>
@@ -148,7 +148,7 @@
                     </a>
                     <div class="collapse ms-3" id="settingsMenu">
                         <ul class="nav flex-column">
-                            <li><a href="{% url 'site_settings' %}" class="nav-link text-white small"><i class="bi bi-card-text me-2"></i> Site Details</a></li>
+                            <li><a href="{% url 'users:site_settings' %}" class="nav-link text-white small"><i class="bi bi-card-text me-2"></i> Site Details</a></li>
                         </ul>
                     </div>
                 </li>
