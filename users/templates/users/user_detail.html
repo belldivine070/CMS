@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+
+
 {% block content %}
 <div class="row">
     <div class="col-lg-8 offset-lg-2">
@@ -38,8 +40,8 @@
                     {% endif %}
                 </p>
 
-                <a href="{% url 'edit_user' target_user.id %}" class="btn btn-primary mt-3">Edit Profile</a>
-                <a href="{% url 'manage_users' %}" class="btn btn-secondary mt-3">Back to List</a>
+                <a href="{% url 'users:edit_user' target_user.id %}" class="btn btn-primary mt-3">Edit Profile</a>
+                <a href="{% url 'users:manage_users' %}" class="btn btn-secondary mt-3">Back to List</a>
             </div>
         </div>
     </div>
