@@ -68,39 +68,46 @@ class Services(TemplateView):
 
 
 
+
 class External(FormView):
     template_name = 'portech/index.html'
     form_class = SubcribersForm
     success_url = reverse_lazy('portech:home')  
 
-    def get_absolute_url(self):
-        return reverse_lazy('portech:home')
-    
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
         
-        # Check for existing subscriber
+        # 1. Check for existing subscriber
         if ExternalSubscriber.objects.filter(email=email).exists():
             messages.warning(self.request, "This email is already subscribed.")
             return HttpResponseRedirect(self.success_url)
 
+        # 2. Initialize instance and IP
         subscriber = form.save(commit=False)
         ip = get_client_ip(self.request)
         subscriber.ip_address = ip 
 
-        # --- REAL-TIME GEO TRACKING ---
-        g = GeoIP2()
+        # 3. Geo Tracking with Error Handling
         try:
-            # Use 'city' to get detailed info or 'country' for just the nation
+            g = GeoIP2()
             location = g.city(ip)
+            
+            # Match these keys to your model fields (city, region, country)
             subscriber.city = location.get('city')
-            subscriber.country_code = location.get('country_code')
-            subscriber.latitude = location.get('latitude')
-            subscriber.longitude = location.get('longitude')
+            subscriber.region = location.get('region')
+            subscriber.country = location.get('country_name')
+            
+            # Optional: if you add these to your model later
+            # subscriber.latitude = location.get('latitude')
+            # subscriber.longitude = location.get('longitude')
+            
         except Exception as e:
-            # Handle cases where IP is local (127.0.0.1) or not in database
-            print(f"GeoIP Error: {e}")
+            # This catches missing GEOIP_PATH, missing .mmdb files, or local IPs
+            print(f"GeoIP Error for IP {ip}: {e}")
 
+        # 4. Save to Database
         subscriber.save()
-        messages.success(self.request, "Subscriber added successfully!")
+        
+        # 5. Success Message
+        messages.success(self.request, "Thank you for subscribing!")
         return HttpResponseRedirect(self.success_url)
