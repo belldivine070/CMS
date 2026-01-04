@@ -15,7 +15,7 @@
             <a href="#" class="btn btn-link text-decoration-none text-muted small pe-3 border-end">
                 <i class="bi bi-arrow-left"></i> Back
             </a>
-            <a href="{% url 'widget_create' %}" class="btn-add-custom">
+            <a href="{% url 'users:widget_create' %}" class="btn-add-custom">
                 <i class="bi bi-plus-square"></i> <span>Add New Widget</span>
             </a>
         </div>
@@ -41,7 +41,7 @@
                         <tr>
                             <td class="ps-4 text-muted small">{{ forloop.counter }}</td>
                             <td>
-                                <a href="{% url 'post_list_by_widget' widget_slug=widget.slug %}" class="text-decoration-none">
+                                <a href="{% url 'users:post_list_by_widget' widget_slug=widget.slug %}" class="text-decoration-none">
                                     <div class="fw-bold text-dark">{{ widget.title }}</div>
                                 </a>
                                 <small class="text-muted d-lg-none">{{ widget.slug }}</small>
@@ -73,12 +73,12 @@
                             
                             <td class="text-end pe-4">
                                 <div class="btn-group">
-                                    <a href="{% url 'widget_update' slug=widget.slug %}" class="btn-action-edit" title="Edit">
+                                    <a href="{% url 'users:widget_update' slug=widget.slug %}" class="btn-action-edit" title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     
                                     {% if widget.post_count == 0 %}
-                                        <form method="post" action="{% url 'widget_delete' slug=widget.slug %}" class="d-inline" onsubmit="return confirm('Delete widget?');">
+                                        <form method="post" action="{% url 'users:widget_delete' slug=widget.slug %}" class="d-inline" onsubmit="return confirm('Delete widget?');">
                                             {% csrf_token %}
                                             <button type="submit" class="btn-action-delete ms-1">
                                                 <i class="bi bi-trash"></i>

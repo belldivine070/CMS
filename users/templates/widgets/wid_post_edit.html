@@ -8,7 +8,7 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">✏️ Edit {{ widget.name }} Slide: {{ post.title }}</h2>
-        <a href="{% url 'post_list_by_widget' widget_slug=widget.slug %}" class="btn btn-secondary">
+        <a href="{% url 'users:post_list_by_widget' widget_slug=widget.slug %}" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Back to {{ widget.name }} Posts
         </a>
     </div>

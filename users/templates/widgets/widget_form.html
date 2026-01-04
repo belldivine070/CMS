@@ -9,7 +9,7 @@
         <h2>
             {% if form.instance.pk %}✏️ Edit Widget: <strong>{{ form.instance.name }}</strong>{% else %}✨ Create New Widget{% endif %}
         </h2>
-        <a href="{% url 'widget_list' %}" class="btn btn-secondary">
+        <a href="{% url 'users:widget_list' %}" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Back to List
         </a>
     </div>
@@ -156,7 +156,7 @@
                             
                             {% if form.instance.pk %}
                                 {% if widget.post_count == 0 %}
-                                    <a href="{% url 'widget_delete' slug=form.instance.slug %}" 
+                                    <a href="{% url 'users:widget_delete' slug=form.instance.slug %}" 
                                     class="btn btn-outline-danger btn-sm"
                                     onclick="return confirm('Delete this widget?');">
                                         Delete Widget

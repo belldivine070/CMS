@@ -8,7 +8,7 @@
 <div class="container-fluid mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>✍️ Create New Post</h2>
-        <a href="{% url 'post_list_by_widget' widget_slug=widget.slug %}" class="btn btn-secondary">
+        <a href="{% url 'users:post_list_by_widget' widget_slug=widget.slug %}" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Back to Posts
         </a>
     </div>

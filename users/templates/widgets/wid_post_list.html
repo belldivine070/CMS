@@ -12,10 +12,10 @@
         </div>
 
         <div class="d-flex gap-2 justify-content-center">
-            <a href="{% url 'widget_list' %}" class="btn btn-outline-secondary btn-sm d-flex align-items-center">
+            <a href="{% url 'users:widget_list' %}" class="btn btn-outline-secondary btn-sm d-flex align-items-center">
                 <i class="bi bi-arrow-left me-1"></i> Back
             </a>
-            <a href="{% url 'widget_post_create' widget_slug=widget.slug %}" class="btn btn-primary btn-sm d-flex align-items-center">
+            <a href="{% url 'users:widget_post_create' widget_slug=widget.slug %}" class="btn btn-primary btn-sm d-flex align-items-center">
                 <i class="bi bi-plus-lg me-1"></i> Add Post
             </a>
         </div>
@@ -76,13 +76,13 @@
                             
                             <td class="text-end pe-4">
                                 <div class="btn-group">
-                                    <a href="{% url 'widget_post_edit' widget_slug=post.widget.slug post_slug=post.slug %}" 
+                                    <a href="{% url 'users:widget_post_edit' widget_slug=post.widget.slug post_slug=post.slug %}" 
                                        class="btn-action-edit" title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     
                                     <form method="post" 
-                                          action="{% url 'widget_post_delete' widget_slug=post.widget.slug post_slug=post.slug %}" 
+                                          action="{% url 'users:widget_post_delete' widget_slug=post.widget.slug post_slug=post.slug %}" 
                                           class="d-inline" 
                                           onsubmit="return confirm('Delete this post?');">
                                         {% csrf_token %}
