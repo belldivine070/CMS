@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container-fluid mt-3 mt-md-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="h3 mb-1 text-dark fw-bold">Role Management</h2>
+            <p class="text-muted small mb-0">Manage system permissions and user roles</p>
+        </div>
+
+        <button class="btn btn-primary d-flex align-items-center gap-2 px-4 shadow-sm fw-bold"
+                data-bs-toggle="modal"
+                data-bs-target="#addRoleModal">
+            <i class="bi bi-plus-lg"></i> <span class="d-none d-sm-inline">Add New Role</span>
+        </button>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="bg-light d-none d-lg-table-header-group">
+                        <tr class="text-uppercase small fw-bold text-secondary">
+                            <th class="ps-4 py-3" style="width:5%;">#</th>
+                            <th class="py-3" style="width:30%;">Role Name</th>
+                            <th class="text-center py-3" style="width:15%;">Create User</th>
+                            <th class="text-center py-3" style="width:15%;">Assign Staff</th>
+                            <th class="text-center py-3" style="width:15%;">Users Count</th>
+                            <th class="text-end pe-4 py-3" style="width:20%;">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="border-top-0">
+                        {% for role in roles %}
+                        <tr>
+                            <td class="ps-4 text-muted small d-none d-lg-table-cell">
+                                {{ forloop.counter }}
+                            </td>
+
+                            <td>
+                                <div class="fw-bold text-dark fs-6">{{ role.name }}</div>
+
+                                <div class="d-lg-none mt-2 d-flex flex-wrap gap-2">
+                                    <span class="badge bg-light text-dark border fw-normal">
+                                        <i class="bi bi-people me-1"></i>{{ role.user_count }} Users
+                                    </span>
+
+                                    <span class="badge {% if role.can_create_user %}bg-success{% else %}bg-secondary{% endif %}">
+                                        Create: {{ role.can_create_user|yesno:"Yes,No" }}
+                                    </span>
+
+                                    <span class="badge {% if role.can_assign_staff %}bg-success{% else %}bg-secondary{% endif %}">
+                                        Assign: {{ role.can_assign_staff|yesno:"Yes,No" }}
+                                    </span>
+                                </div>
+                            </td>
+
+                            <td class="text-center d-none d-lg-table-cell">
+                                <span class="badge {% if role.can_create_user %}bg-success{% else %}bg-secondary{% endif %} px-3 py-2">
+                                    {{ role.can_create_user|yesno:"Yes,No" }}
+                                </span>
+                            </td>
+
+                            <td class="text-center d-none d-lg-table-cell">
+                                <span class="badge {% if role.can_assign_staff %}bg-success{% else %}bg-secondary{% endif %} px-3 py-2">
+                                    {{ role.can_assign_staff|yesno:"Yes,No" }}
+                                </span>
+                            </td>
+
+                            <td class="text-center d-none d-lg-table-cell">
+                                <span class="fw-bold text-primary">
+                                    {{ role.user_count }}
+                                </span>
+                            </td>
+
+                            <td class="text-end pe-4">
+                                <div class="btn-group shadow-sm">
+                                    <a href="{% url 'users:edit_role' pk=role.pk %}"
+                                       class="btn btn-white btn-sm border text-info px-2"
+                                       title="Edit Role">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    <a href="{% url 'users:delete_role' pk=role.pk %}"
+                                       class="btn btn-white btn-sm border text-danger px-2"
+                                       title="Delete Role">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-5">
+                                <i class="bi bi-shield-lock d-block fs-2 mb-2"></i>
+                                No roles have been defined yet.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Clean Header Styling */
+.table thead th {
+    background-color: #f8f9fa !important;
+    border-bottom: 2px solid #edf2f9 !important;
+    color: #6e84a3;
+    font-size: 0.75rem;
+    letter-spacing: .02em;
+}
+
+/* Hover effect on rows */
+.table tbody tr {
+    transition: all 0.2s ease-in-out;
+}
+
+.table tbody tr:hover {
+    background-color: #f9fbff !important;
+}
+
+/* Rounded Action Buttons */
+.btn-group .btn {
+    border-color: #edf2f9 !important;
+}
+.btn-group .btn:hover {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 991px) {
+    .table td {
+        padding: 1.25rem 1rem !important;
+    }
+}
+</style>
+{% endblock %}

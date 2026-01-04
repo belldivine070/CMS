@@ -11,7 +11,7 @@
         <h2>
             {% if form.instance.pk %}✏️ Edit Category: <strong>{{ form.instance.name }}</strong>{% else %}✨ Create New Category{% endif %}
         </h2>
-        <a href="{% url 'category_list' %}" class="btn btn-secondary">
+        <a href="{% url 'users:category_list' %}" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Back 
         </a>
     </div>
@@ -185,7 +185,7 @@
                             </button>
                             
                             {% if form.instance.pk %}
-                                <a href="{% url 'category_delete' slug=form.instance.slug %}" 
+                                <a href="{% url 'users:category_delete' slug=form.instance.slug %}" 
                                 class="btn btn-outline-danger btn-sm"
                                 onclick="return confirm('Are you sure you want to delete this category: {{ form.instance.name }}?');">
                                     <i class="bi bi-trash"></i> Delete Category

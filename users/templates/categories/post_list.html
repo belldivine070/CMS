@@ -11,10 +11,10 @@
         </div>
 
         <div class="d-flex gap-2 justify-content-center align-items-center">
-            <a href="{% url 'category_list' %}" class="btn btn-link text-decoration-none text-muted small pe-3 border-end">
+            <a href="{% url 'users:category_list' %}" class="btn btn-link text-decoration-none text-muted small pe-3 border-end">
                 <i class="bi bi-arrow-left"></i> Back to Categories
             </a>
-            <a href="{% url 'post_create' category_slug=category.slug %}" class="btn-add-post">
+            <a href="{% url 'users:post_create' category_slug=category.slug %}" class="btn-add-post">
                 <i class="bi bi-plus-lg"></i> <span>Add New Post</span>
             </a>
         </div>
@@ -66,11 +66,11 @@
                             </td>
                             <td class="text-end pe-4">
                                 <div class="btn-group">
-                                    <a href="{% url 'post_edit' category_slug=post.category.slug post_slug=post.slug %}" 
+                                    <a href="{% url 'users:post_edit' category_slug=post.category.slug post_slug=post.slug %}" 
                                        class="btn btn-action-edit" title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <form method="post" action="{% url 'category_post_delete' category_slug=post.category.slug post_slug=post.slug %}" class="d-inline" onsubmit="return confirm('Delete post?');">
+                                    <form method="post" action="{% url 'users:category_post_delete' category_slug=post.category.slug post_slug=post.slug %}" class="d-inline" onsubmit="return confirm('Delete post?');">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-action-delete" title="Delete">
                                             <i class="bi bi-trash"></i>

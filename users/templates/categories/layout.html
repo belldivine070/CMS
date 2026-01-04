@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Admin Dashboard{% endblock title %}</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'users/css/jquery.datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'image.png' %}">
+
+    {% if form.media %}
+        {{ form.media }}
+    {% endif %}
+
+    <style>
+        /* Datetimepicker Responsive Fix */
+        @media (max-width: 480px) {
+            .xdsoft_datetimepicker { width: 300px !important; left: 5% !important; }
+        }
+        .xdsoft_datetimepicker { z-index: 9999 !important; }
+        .content-wrapper { transition: all 0.3s; width: 100%; }
+    </style>
+</head>
+
+<body id="mainBody">
+
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-3">
+        <button class="btn btn-outline-light me-3" id="sidebarToggle">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <a class="navbar-brand" href="#">Admin Panel</a>
+
+        <form class="d-none d-md-flex mx-auto w-50 position-relative" role="search">
+            <input class="form-control ps-5" type="search" placeholder="Search..." aria-label="Search">
+            <button class="btn position-absolute top-50 start-0 translate-middle-y ms-2 border-0 bg-transparent" type="submit">
+                <i class="bi bi-search text-light"></i>
+            </button>
+        </form>
+
+        <div class="ms-auto d-flex align-items-center">
+            <button class="btn btn-outline-light me-3 d-none d-sm-block" id="darkModeToggle" title="Toggle theme">
+                <i class="bi bi-moon-stars" id="moonIcon"></i>
+                <i class="bi bi-sun d-none" id="sunIcon"></i>
+            </button>
+
+            <img src="{% if user.profile_image %}{{ user.profile_image.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" alt="Profile" class="rounded-circle me-2" width="32" height="32">
+            <span class="text-white me-3 d-none d-lg-inline">{{ user.username|default:"Admin" }}</span>
+
+            <div class="dropdown">
+                <a class="text-white dropdown-toggle" data-bs-toggle="dropdown" style="cursor: pointer;">
+                    <i class="bi bi-person-circle fs-5"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form action="{% url 'users:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item text-danger fw-bold">Sign out</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+
+        <div id="sidebar" class="bg-dark text-white p-3">
+            <a href="/" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+                <i class="bi bi-speedometer2 fs-4 me-2"></i>
+                <span class="fs-4">Dashboard</span>
+            </a>
+
+            <hr class="border-light">
+
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="{% url 'users:index' %}" class="nav-link text-white active">
+                        <i class="bi bi-house-door me-2"></i> Dashboard Home
+                    </a>
+                </li>
+
+                <li>
+                    <a data-bs-toggle="collapse" href="#CategoryMenu" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-tags me-2"></i> Categories
+                        <i class="bi bi-chevron-down ms-auto small"></i>
+                    </a>
+                    <div class="collapse ms-3" id="CategoryMenu">
+                        <ul class="nav flex-column">
+                            <li><a href="{% url 'users:category_list' %}" class="nav-link text-white small"><i class="bi bi-list-ul me-2"></i> List All</a></li>
+                            <li><a href="{% url 'users:category_create' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add New</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a data-bs-toggle="collapse" href="#WidgetMenu" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-grid-1x2 me-2"></i> Widgets
+                        <i class="bi bi-chevron-down ms-auto small"></i>
+                    </a>
+                    <div class="collapse ms-3" id="WidgetMenu">
+                        <ul class="nav flex-column">
+                            <li><a href="{% url 'users:widget_list' %}" class="nav-link text-white small"><i class="bi bi-list-ul me-2"></i> List All</a></li>
+                            <li><a href="{% url 'users:widget_create' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add New</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a data-bs-toggle="collapse" href="#commMenu" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-megaphone me-2"></i> Communications
+                        <i class="bi bi-chevron-down ms-auto small"></i>
+                    </a>
+                    <div class="collapse ms-3" id="commMenu">
+                        <ul class="nav flex-column">
+                            <li><a href="{% url 'users:broadcast_dashboard' %}" class="nav-link text-white small"><i class="bi bi-envelope me-2"></i> Email Broadcasts</a></li>
+                            <li><a href="{% url 'users:subscriber_list' %}" class="nav-link text-white small"><i class="bi bi-people me-2"></i> Subscribers</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a data-bs-toggle="collapse" href="#usersMenu" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-shield-lock me-2"></i> Users & Roles
+                        <i class="bi bi-chevron-down ms-auto small"></i>
+                    </a>
+                    <div class="collapse ms-3" id="usersMenu">
+                        <ul class="nav flex-column">
+                            <li><a href="{% url 'users:manage_users' %}" class="nav-link text-white small"><i class="bi bi-people me-2"></i> Manage Users</a></li>
+                            <li><a href="{% url 'users:register_user' %}" class="nav-link text-white small"><i class="bi bi-person-plus me-2"></i> Register New</a></li>
+                            <li><a href="{% url 'users:manage_roles' %}" class="nav-link text-white small"><i class="bi bi-key me-2"></i> Roles & Permissions</a></li>
+                            <li><a href="{% url 'users:add_role' %}" class="nav-link text-white small"><i class="bi bi-plus-circle me-2"></i> Add Role</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a data-bs-toggle="collapse" href="#settingsMenu" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-sliders me-2"></i> Settings
+                        <i class="bi bi-chevron-down ms-auto small"></i>
+                    </a>
+                    <div class="collapse ms-3" id="settingsMenu">
+                        <ul class="nav flex-column">
+                            <li><a href="{% url 'users:site_settings' %}" class="nav-link text-white small"><i class="bi bi-card-text me-2"></i> Site Details</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <hr class="border-light">
+        </div>
+
+        <main id="content" class="flex-grow-1 content-wrapper p-3 p-md-4 bg-light">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show shadow-sm">
+                        {{ message }}
+                        <button class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="container-fluid">
+                {% block content %}{% endblock content %}
+            </div>
+        </main>
+    </div>
+
+    <div id="mobileOverlay"></div>
+    <button id="backToTop" class="btn btn-primary shadow-sm">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'users/js/jquery.datetimepicker.full.min.js' %}"></script>
+    <script src="{% static 'users/js/main.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.datetimepicker, #datetimepicker').datetimepicker({
+                format: 'Y-m-d H:i',
+                timepicker: true,
+                datepicker: true,
+                step: 15
+            });
+        });
+    </script>
+</body>
+</html>

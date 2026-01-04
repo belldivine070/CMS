@@ -10,7 +10,7 @@
             <h2 class="h3 mb-1 text-dark fw-bold">All Categories</h2>
             <p class="text-muted mb-0">Search, Sort, Edit, and Delete Content Categories</p>
         </div>
-        <a href="{% url 'category_create' %}" class="btn btn-primary w-10 w-md-auto">
+        <a href="{% url 'users:category_create' %}" class="btn btn-primary w-10 w-md-auto">
             <i class="bi bi-plus-square"></i> Add New Category
         </a>
     </div>
@@ -35,7 +35,7 @@
                         <tr>
                             <td class="ps-3 text-muted small">{{ forloop.counter }}</td>
                             <td>
-                                <a href="{% url 'post_list_by_category' category_slug=category.slug %}" class="text-decoration-none">
+                                <a href="{% url 'users:post_list_by_category' category_slug=category.slug %}" class="text-decoration-none">
                                     <div class="fw-bold text-dark">{{ category.title }}</div>
                                 </a>
                                 <small class="text-muted d-lg-none">{{ category.slug }}</small>
@@ -63,12 +63,12 @@
                             </td>
                             <td class="text-end pe-3">
                                 <div class="btn-group">
-                                    <a href="{% url 'category_update' slug=category.slug %}" class="btn btn-sm btn-outline-primary" title="Edit">
+                                    <a href="{% url 'users:category_update' slug=category.slug %}" class="btn btn-sm btn-outline-primary" title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     
                                     {% if category.post_count == 0 %}
-                                    <form method="post" action="{% url 'category_delete' slug=category.slug %}" class="d-inline" onsubmit="return confirm('Delete this category?');">
+                                    <form method="post" action="{% url 'users:category_delete' slug=category.slug %}" class="d-inline" onsubmit="return confirm('Delete this category?');">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-sm btn-outline-danger">
                                             <i class="bi bi-trash"></i>

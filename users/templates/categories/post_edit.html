@@ -11,7 +11,7 @@
     <!-- PAGE HEADER -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">✏️ Edit Post: {{ post.title }}</h2>
-        <a href="{% url 'post_list_by_category' category_slug=category_slug %}" class="btn btn-secondary">
+        <a href="{% url 'users:post_list_by_category' category_slug=category_slug %}" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Back to {{ category.name }} Posts
         </a>
     </div>
