@@ -64,19 +64,19 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'categories/category_form.html'
-    success_url = reverse_lazy('category_list')
+    success_url = reverse_lazy('users:category_list')
 
 class CategoryEditView(LoginRequiredMixin, UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'categories/category_form.html'
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('category_list')
+    success_url = reverse_lazy('users:category_list')
 
 class CategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = Category
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('category_list') 
+    success_url = reverse_lazy('users:category_list') 
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -142,7 +142,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return context
     
     def get_success_url(self):
-        return reverse('post_list_by_category', kwargs={'category_slug': self.kwargs['category_slug']})
+        return reverse('users:post_list_by_category', kwargs={'category_slug': self.kwargs['category_slug']})
      
 
 class PostEditView(LoginRequiredMixin, UpdateView):
@@ -163,7 +163,7 @@ class PostEditView(LoginRequiredMixin, UpdateView):
         return context
     
     def get_success_url(self):
-        return reverse('post_list_by_category', kwargs={'category_slug': self.kwargs['category_slug']})
+        return reverse('users:post_list_by_category', kwargs={'category_slug': self.kwargs['category_slug']})
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):
@@ -175,16 +175,16 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = CategoryPost
     slug_url_kwarg = 'post_slug'
-    success_url = reverse_lazy('post_list_by_category')
+    success_url = reverse_lazy('users:post_list_by_category')
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         slug = self.kwargs['category_slug']
         self.object.delete()
-        return redirect(reverse('post_list_by_category', kwargs={'category_slug': slug}))
+        return redirect(reverse('users:post_list_by_category', kwargs={'category_slug': slug}))
     
     def get_success_url(self):
-        return reverse('post_list_by_category', kwargs={'category_slug': self.kwargs['category_slug']})
+        return reverse('users:post_list_by_category', kwargs={'category_slug': self.kwargs['category_slug']})
     
 
 # =========================================================
@@ -208,19 +208,19 @@ class WidgetCreateView(LoginRequiredMixin, CreateView):
     model = Widget
     form_class = WidgetForm
     template_name = 'widgets/widget_form.html'
-    success_url = reverse_lazy('widget_list')
+    success_url = reverse_lazy('users:widget_list')
 
 class WidgetEditView(LoginRequiredMixin, UpdateView):
     model = Widget
     form_class = WidgetForm
     template_name = 'widgets/widget_form.html'
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('widget_list')
+    success_url = reverse_lazy('users:widget_list')
 
 class WidgetDeleteView(LoginRequiredMixin, DeleteView):
     model = Widget
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('widget_list')
+    success_url = reverse_lazy('users:widget_list')
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -266,7 +266,7 @@ class WidgetPostCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('post_list_by_widget', kwargs={'widget_slug': self.kwargs['widget_slug']})
+        return reverse('users:post_list_by_widget', kwargs={'widget_slug': self.kwargs['widget_slug']})
 
 
 class WidgetPostEditView(LoginRequiredMixin, UpdateView):
@@ -301,7 +301,7 @@ class WidgetPostEditView(LoginRequiredMixin, UpdateView):
     
     def get_success_url(self):
         # Redirect back to the slide list for this specific widget
-        return reverse('post_list_by_widget', kwargs={'widget_slug': self.object.widget.slug})
+        return reverse('users:post_list_by_widget', kwargs={'widget_slug': self.object.widget.slug})
 
 
 class WidgetPostDeleteView(LoginRequiredMixin, DeleteView):
@@ -312,7 +312,7 @@ class WidgetPostDeleteView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         widget_slug = self.object.widget.slug
         self.object.delete()
-        return redirect('post_list_by_widget', widget_slug=widget_slug)
+        return redirect('users:post_list_by_widget', widget_slug=widget_slug)
 
 # =========================================================
 #             3. USER & ROLE MANAGEMENT VIEWS
@@ -323,8 +323,10 @@ class ManageUsersListView(UserPassesTestMixin, ListView):
     model = CustomUser
     template_name = 'users/manage_users.html'
     context_object_name = 'users'
+    
     def test_func(self):
         return self.request.user.is_authenticated and self.request.user.role is not None
+    
     def get_queryset(self):
         user = self.request.user
         if user.is_superuser:
@@ -373,14 +375,14 @@ class UserDetailView(UserPassesTestMixin, DetailView):
 #     model = CustomUser
 #     form_class = AdminUserCreationForm
 #     template_name = 'users/register_user_form.html'
-#     success_url = reverse_lazy('manage_users')
+#     success_url = reverse_lazy('users:manage_users')
 
 # class EditSubordinateView(RolePermissionRequiredMixin, UpdateView):
 #     model = CustomUser
 #     form_class = AdminUserCreationForm
 #     template_name = 'users/edit_user_form.html'
 #     required_permission = 'can_assign_staff' 
-#     success_url = reverse_lazy('manage_users')
+#     success_url = reverse_lazy('users:manage_users')
 
 # class UserDetailView(UserPassesTestMixin, DetailView):
 #     model = CustomUser
@@ -407,19 +409,19 @@ class RoleCreateView(UserPassesTestMixin, CreateView):
     model = Role
     form_class = RoleForm
     template_name = 'roles/add_role.html'
-    success_url = reverse_lazy('manage_roles')
+    success_url = reverse_lazy('users:manage_roles')
     def test_func(self): return self.request.user.is_superuser
 
 class RoleUpdateView(UserPassesTestMixin, UpdateView):
     model = Role
     form_class = RoleForm
     template_name = 'roles/edit_role.html'
-    success_url = reverse_lazy('manage_roles')
+    success_url = reverse_lazy('users:manage_roles')
     def test_func(self): return self.request.user.is_superuser
 
 class RoleDeleteView(UserPassesTestMixin, DeleteView):
     model = Role
-    success_url = reverse_lazy('manage_roles')
+    success_url = reverse_lazy('users:manage_roles')
     def test_func(self): return self.request.user.is_superuser
     def get(self, request, *args, **kwargs):
         role = self.get_object()
@@ -437,8 +439,10 @@ class RoleDeleteView(UserPassesTestMixin, DeleteView):
 class SiteSettingsUpdateView(UserPassesTestMixin, FormView):
     form_class = SiteSettingsKeyForm
     template_name = 'settings/site_settings.html' 
-    success_url = reverse_lazy('site_settings') 
+    success_url = reverse_lazy('users:site_settings') 
+    
     def test_func(self): return self.request.user.is_superuser
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         combined = []
@@ -451,21 +455,25 @@ class SiteSettingsUpdateView(UserPassesTestMixin, FormView):
             })
         context['combined_settings_list'] = combined
         return context
+        
     def form_valid(self, form):
         form.save()
         messages.success(self.request, "Settings updated.")
         return super().form_valid(form)
 
+
 class CustomPasswordChangeView(LoginRequiredMixin, FormView):
     template_name = 'registration/password_change_form.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('users:login')
     def get_form_class(self):
         from django.contrib.auth.forms import PasswordChangeForm
         return PasswordChangeForm
+        
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
+    
     def form_valid(self, form):
         user = form.save()
         update_session_auth_hash(self.request, user)
@@ -473,21 +481,18 @@ class CustomPasswordChangeView(LoginRequiredMixin, FormView):
         return super().form_valid(form)
 
 
-
-
-
 class SubcribersHubView(LoginRequiredMixin, FormView):
     """Handles manual addition, bulk CSV upload, and listing of subscribers."""
     template_name = 'subscribers_list.html'
     form_class = Subcribers
-    success_url = reverse_lazy('subscriber_list')
+    success_url = reverse_lazy('users:subscriber_list')
 
     def get_success_url(self):
         next_url = self.request.POST.get('next') or self.request.META.get('HTTP_REFERER')
         
         if next_url:
             return next_url
-        return reverse_lazy('subscriber_list')
+        return reverse_lazy('users:subscriber_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -543,7 +548,7 @@ class SubcribersHubView(LoginRequiredMixin, FormView):
 
 class SubscriberDeleteView(LoginRequiredMixin, DeleteView):
     model = ExternalSubscriber
-    success_url = reverse_lazy('subscriber_list')
+    success_url = reverse_lazy('users:subscriber_list')
     
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
@@ -575,7 +580,7 @@ class BroadcastCreateView(LoginRequiredMixin, CreateView):
     model = NewsPost
     form_class = BroadcastForm
     template_name = 'send_email.html'
-    success_url = reverse_lazy('broadcast_dashboard')
+    success_url = reverse_lazy('users:broadcast_dashboard')
 
     def get(self, request, *args, **kwargs):
         """Handle AJAX requests for audience emails."""
@@ -734,7 +739,7 @@ class BroadcastCreateView(LoginRequiredMixin, CreateView):
 
 class BroadcastDeleteView(LoginRequiredMixin, DeleteView):
     model = NewsPost
-    success_url = reverse_lazy('broadcast_dashboard')
+    success_url = reverse_lazy('users:broadcast_dashboard')
 
     def get(self, request, *args, **kwargs):
         """Allows deletion via a simple link (GET request)."""
