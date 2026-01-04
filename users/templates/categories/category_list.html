@@ -7,10 +7,10 @@
 <div class="container-fluid mt-4"> 
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
         <div>
-            <h2 class="h3 mb-1">All Categories</h2>
+            <h2 class="h3 mb-1 text-dark fw-bold">All Categories</h2>
             <p class="text-muted mb-0">Search, Sort, Edit, and Delete Content Categories</p>
         </div>
-        <a href="{% url 'category_create' %}" class="btn btn-primary w-100 w-md-auto">
+        <a href="{% url 'category_create' %}" class="btn btn-primary w-10 w-md-auto">
             <i class="bi bi-plus-square"></i> Add New Category
         </a>
     </div>
@@ -22,30 +22,37 @@
                     <thead class="table-light">
                         <tr>
                             <th class="ps-3" style="width: 5%;">S/N</th>
-                            <th style="width: 25%;">Category</th>
-                            <th class="d-none d-lg-table-cell" style="width: 30%;">Used Fields</th> 
+                            <th style="width: 20%;">Category</th>
+                            <th class="d-none d-lg-table-cell" style="width: 15%;">Slug</th> 
+                            <th class="d-none d-lg-table-cell" style="width: 25%;">Used Fields</th> 
                             <th class="text-center" style="width: 10%;">Posts</th>
                             <th class="text-center" style="width: 10%;">Status</th>
-                            <th class="text-end pe-3" style="width: 20%;">Action</th> 
+                            <th class="text-end pe-3" style="width: 15%;">Action</th> 
                         </tr>
                     </thead>
                     <tbody>
                         {% for category in categories %}
                         <tr>
-                            <td class="ps-3">{{ forloop.counter }}</td>
+                            <td class="ps-3 text-muted small">{{ forloop.counter }}</td>
                             <td>
                                 <a href="{% url 'post_list_by_category' category_slug=category.slug %}" class="text-decoration-none">
                                     <div class="fw-bold text-dark">{{ category.title }}</div>
                                 </a>
-                                <small class="text-muted d-block d-lg-none">{{ category.slug }}</small>
+                                <small class="text-muted d-lg-none">{{ category.slug }}</small>
                             </td>
+
+                            <td class="d-none d-lg-table-cell">
+                                <code class="text-primary small bg-light px-2 py-1 rounded">{{ category.slug }}</code>
+                            </td>
+
                             <td class="d-none d-lg-table-cell">
                                 {% for field_slug in category.child_fields %}
-                                    <span class="badge bg-secondary-subtle text-secondary border small mb-1">
+                                    <span class="badge bg-secondary-subtle text-secondary border small mb-1 fw-normal">
                                         {{ field_slug }}
                                     </span>
                                 {% endfor %}
                             </td>
+
                             <td class="text-center">
                                 <span class="badge rounded-pill bg-info-subtle text-info border border-info">
                                     {{ category.post_count }}
@@ -75,15 +82,26 @@
                                 </div>
                             </td>
                         </tr>
-                        {% empty %}
+                        {% empty %} 
                         <tr>
-                            <td colspan="6" class="text-center py-5 text-muted">
+                            <td colspan="7" class="text-center py-5 text-muted">
                                 <i class="bi bi-folder-x display-4 d-block mb-3"></i>
                                 No content categories defined yet.
                             </td>
                         </tr>
                         {% endfor %}
                     </tbody>
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">S/N</th>
+                            <th>Category</th>
+                            <th class="d-none d-lg-table-cell">Slug</th> 
+                            <th class="d-none d-lg-table-cell">Used Fields</th> 
+                            <th class="text-center">Posts</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-end pe-3">Action</th> 
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>
@@ -91,8 +109,11 @@
 </div>
 
 <style>
-    /* Mobile optimization for long titles */
     .table td { vertical-align: middle; }
+    .table-hover tbody tr:hover {
+        background-color: rgba(13, 110, 253, 0.04);
+        transition: background-color 0.2s ease;
+    }
     @media (max-width: 768px) {
         .btn-group .btn { padding: 0.25rem 0.5rem; }
         .table { font-size: 0.875rem; }
