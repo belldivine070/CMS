@@ -3,7 +3,7 @@ from . import views
 from django.contrib.auth.views import LoginView, LogoutView
 from .forms import EmailAuthenticationForm 
 
-# app_name = 'users' 
+app_name = 'users' 
 
 urlpatterns = [
     # =========================================================
