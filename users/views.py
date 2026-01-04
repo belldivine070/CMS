@@ -318,6 +318,7 @@ class WidgetPostDeleteView(LoginRequiredMixin, DeleteView):
 #             3. USER & ROLE MANAGEMENT VIEWS
 # =========================================================
 
+    
 class ManageUsersListView(UserPassesTestMixin, ListView):
     model = CustomUser
     template_name = 'users/manage_users.html'
@@ -330,26 +331,63 @@ class ManageUsersListView(UserPassesTestMixin, ListView):
             return CustomUser.objects.all().exclude(pk=user.pk).select_related('role', 'assigned_to')
         return CustomUser.objects.filter(assigned_to=user).select_related('role', 'assigned_to')
 
+
 class AdminRegisterUserView(RolePermissionRequiredMixin, CreateView):
     required_permission = 'can_create_user' 
     model = CustomUser
     form_class = AdminUserCreationForm
     template_name = 'users/register_user_form.html'
-    success_url = reverse_lazy('manage_users')
+    success_url = reverse_lazy('users:manage_users')
+
 
 class EditSubordinateView(RolePermissionRequiredMixin, UpdateView):
     model = CustomUser
     form_class = AdminUserCreationForm
     template_name = 'users/edit_user_form.html'
     required_permission = 'can_assign_staff' 
-    success_url = reverse_lazy('manage_users')
+    success_url = reverse_lazy('users:manage_users')
+
 
 class UserDetailView(UserPassesTestMixin, DetailView):
     model = CustomUser
     template_name = 'users/user_detail.html'
     context_object_name = 'target_user'
+
     def test_func(self):
         return self.request.user.is_superuser or self.get_object() == self.request.user
+
+# class ManageUsersListView(UserPassesTestMixin, ListView):
+#     model = CustomUser
+#     template_name = 'users/manage_users.html'
+#     context_object_name = 'users'
+#     def test_func(self):
+#         return self.request.user.is_authenticated and self.request.user.role is not None
+#     def get_queryset(self):
+#         user = self.request.user
+#         if user.is_superuser:
+#             return CustomUser.objects.all().exclude(pk=user.pk).select_related('role', 'assigned_to')
+#         return CustomUser.objects.filter(assigned_to=user).select_related('role', 'assigned_to')
+
+# class AdminRegisterUserView(RolePermissionRequiredMixin, CreateView):
+#     required_permission = 'can_create_user' 
+#     model = CustomUser
+#     form_class = AdminUserCreationForm
+#     template_name = 'users/register_user_form.html'
+#     success_url = reverse_lazy('manage_users')
+
+# class EditSubordinateView(RolePermissionRequiredMixin, UpdateView):
+#     model = CustomUser
+#     form_class = AdminUserCreationForm
+#     template_name = 'users/edit_user_form.html'
+#     required_permission = 'can_assign_staff' 
+#     success_url = reverse_lazy('manage_users')
+
+# class UserDetailView(UserPassesTestMixin, DetailView):
+#     model = CustomUser
+#     template_name = 'users/user_detail.html'
+#     context_object_name = 'target_user'
+#     def test_func(self):
+#         return self.request.user.is_superuser or self.get_object() == self.request.user
 
 class StaffAssignmentView(RolePermissionRequiredMixin, ListView):
     required_permission = 'can_assign_staff' 
