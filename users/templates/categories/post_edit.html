@@ -1,0 +1,246 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load category_tags %}
+
+
+
+{% block content %}
+<div class="container-fluid mt-4">
+
+    <!-- PAGE HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">✏️ Edit Post: {{ post.title }}</h2>
+        <a href="{% url 'users:post_list_by_category' category_slug=category_slug %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to {{ category.name }} Posts
+        </a>
+    </div>
+
+    <!-- FORM -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row g-4">
+
+            <!-- ================= MAIN CONTENT ================= -->
+            <div class="col-lg-8 order-lg-1 order-2">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="mb-0">{{ category }} Content</h4>
+                    </div>
+
+                    <div class="card-body">
+
+                        <!-- TITLE -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.title.label }}</label>
+                            {% render_field form.title class="form-control" placeholder="Post title" %}
+                        </div>
+
+                        <!-- SLUG -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.slug.label }}</label>
+                            {% render_field form.slug class="form-control" placeholder="post-slug" %}
+                            <small class="text-muted">Auto-generated if left blank.</small>
+                        </div>
+
+                        <!-- EXCERPT -->
+                        {% if form.excerpt %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.excerpt.label }}</label>
+                            {% render_field form.excerpt class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        <!-- CONTENT -->
+                        {% if form.content %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.content.label }}</label>
+                            {% render_field form.content class="form-control" rows="6" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.video %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.video.label }}</label>
+
+                            {% if form.instance.video %}
+                                <video controls class="w-100 mb-2 rounded">
+                                    <source src="{{ form.instance.video.url }}">
+                                    Your browser does not support the video tag.
+                                </video>
+                            {% endif %}
+
+                            {% render_field form.video class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.audio %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.audio.label }}</label>
+
+                            {% if form.instance.audio %}
+                                <audio controls class="w-100 mb-2">
+                                    <source src="{{ form.instance.audio.url }}">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            {% endif %}
+
+                            {% render_field form.audio class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.icon %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.icon.label }}</label>
+                            {% render_field form.icon class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.btn_text %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.btn_text.label }}</label>
+                            {% render_field form.btn_text class="form-control" placeholder="Read More" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.subtitle %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.subtitle.label }}</label>
+                            {% render_field form.subtitle class="form-control" placeholder="Add Subtitle" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.tags %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.tags.label }}</label>
+                            {% render_field form.tags class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.image_align %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.image_align.label }}</label>
+                            {% render_field form.image_align class="form-select" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.event_date %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.event_date.label }}</label>
+                            {% render_field form.event_date class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.address %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.address.label }}</label>
+                            {% render_field form.address class="form-control" placeholder="Address" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.addfield1 %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.addfield1.label }}</label>
+                            {% render_field form.addfield1 class="form-control" placeholder="Add Field 1" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.addfield2 %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.addfield2.label }}</label>
+                            {% render_field form.addfield2 class="form-control" placeholder="Add Field 2" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.addfield3 %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.addfield3.label }}</label>
+                            {% render_field form.addfield3 class="form-control" placeholder="Add Field 3" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.addfield4 %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.addfield4.label }}</label>
+                            {% render_field form.addfield4 class="form-control" placeholder="Add Field 4" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.shortcodes1 %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.shortcodes1.label }}</label>
+                            {% render_field form.shortcodes1 class="form-control" placeholder="Shortcode 1" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.shortcodes2 %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.shortcodes2.label }}</label>
+                            {% render_field form.shortcodes2 class="form-control" placeholder="Shortcode 2" %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.progress %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">{{ form.progress.label }}</label>
+                            {% render_field form.progress class="form-control" placeholder="Progress" %}
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SIDEBAR ================= -->
+            <div class="col-lg-4 order-lg-2 order-1">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h6 class="mb-0">Post Options</h6>
+                    </div>
+
+                    <div class="card-body">
+
+                        <!-- CATEGORY (HIDDEN) -->
+                        {% render_field form.category type="hidden" %}
+
+                        <!-- EXISTING IMAGE -->
+                        {% if form.instance.image %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Current Image</label>
+                            <img src="{{ form.instance.image.url }}" class="img-fluid rounded mb-2">
+                        </div>
+                        {% endif %}
+
+                        <!-- IMAGE UPLOAD -->
+                        {% if form.image %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Change Image</label>
+                            {% render_field form.image class="form-control" %}
+                        </div>
+                        {% endif %}
+
+                        <!-- PUBLISH -->
+                        {% if form.is_published %}
+                        <div class="form-check mb-3">
+                            {% render_field form.is_published class="form-check-input" %}
+                            <label class="form-check-label" for="{{ form.is_published.id_for_label }}">
+                                Publish Now
+                            </label>
+                        </div>
+                        {% endif %}
+
+                        <!-- SUBMIT -->
+                        <button type="submit" class="btn btn-success w-100">
+                            Update Post
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>                      
+                        
+{% endblock content %}
