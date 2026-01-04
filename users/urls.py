@@ -40,7 +40,7 @@ urlpatterns = [
     # 2. USER / ROLE MANAGEMENT
     # =========================================================
     path('users/', views.ManageUsersListView.as_view(), name='manage_users'),
-    path('users/register/', views.AdminRegisterUserView.as_view(), name='admin_register_user'),
+    path('users/register/', views.AdminRegisterUserView.as_view(), name='register_user'),
     path('users/edit/<uuid:pk>/', views.EditSubordinateView.as_view(), name='edit_user'),
     path('users/details/<uuid:pk>/', views.UserDetailView.as_view(), name='user_detail'),
     path('roles/add/', views.RoleCreateView.as_view(), name='add_role'),
