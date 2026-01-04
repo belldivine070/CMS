@@ -3,6 +3,7 @@
 {% load widget_tweaks %}
 
 
+
 {% block content %}
 
 <div class="container-fluid pt-3">
@@ -18,15 +19,6 @@
         </div>
 
         <div class="card-body p-4">
-
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show small" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
 
             <form method="post" class="small">
                 {% csrf_token %}
@@ -78,7 +70,7 @@
                         <i class="bi bi-save me-1"></i> Save
                     </button>
 
-                    <a href="{% url 'manage_roles' %}" class="btn btn-outline-secondary btn-sm ms-2 px-4">
+                    <a href="{% url 'users:manage_roles' %}" class="btn btn-outline-secondary btn-sm ms-2 px-4">
                         Cancel
                     </a>
                 </div>
