@@ -17,7 +17,7 @@ urlpatterns = [
         authentication_form=EmailAuthenticationForm,
         next_page='index' 
     ), name='login'), 
-    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='users:logout'),
     path('password/change/', views.CustomPasswordChangeView.as_view(), name='password_change'),
     
     # =========================================================
