@@ -94,8 +94,8 @@ DATABASES = {
 
 # --- AUTHENTICATION ---
 AUTH_USER_MODEL = 'users.CustomUser'
-LOGIN_URL = '/bg-admin/login/'
-LOGOUT_REDIRECT_URL = '/bg-admin/login/'
+LOGIN_URL = 'users:login'
+LOGOUT_REDIRECT_URL = 'users:login'
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
