@@ -16,7 +16,7 @@
         </div>
 
         <div class="card-body p-0">
-            <form action="{% url 'site_settings' %}" method="post">
+            <form action="{% url 'users:site_settings' %}" method="post">
                 {% csrf_token %}
 
                 <div class="table-responsive">
